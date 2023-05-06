@@ -1,0 +1,275 @@
+body{
+    margin: 0;
+}
+.HeaderSup{
+    
+    color: #FFFFFF;
+}
+#support{
+    background-color: black;
+    padding: 5px 10%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}#support>span{
+    display: flex;
+    align-items: center;
+}#support select{
+    background-color: transparent;
+    color: #E1BCAB;
+    border: 0;
+    outline: 0;
+}
+#support>span>a>img{
+    margin: 0 6px;
+}
+
+#p{
+    margin:0 ;
+}
+.news{
+    display: flex;
+    align-items: center;
+}.news>div{
+    position: relative;
+    overflow: hidden;
+    width:340px;
+    height:29px
+}.news #p{
+    position: absolute;
+    animation: slide-right 7s linear infinite;
+    width: 100%;
+    margin: auto;
+}@keyframes slide-right {
+    0% {
+      transform: translateX(-129%);
+    }
+    100% {
+      transform: translateX(159%);
+    }
+}.news #p2{
+    position: absolute;
+    animation: slide-left 7s linear infinite;
+    width: 100%;
+    margin: auto;
+}@keyframes slide-left {
+    0% {
+      transform: translateX(159%);
+    }
+    100% {
+      transform: translateX(-129%);
+    }
+  }
+.HeaderIndex{
+    padding: 75px 10% 25px;
+    width: 80%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+.blur{
+    backdrop-filter: blur(7px);
+}
+#navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding-left: 0;
+}#mobileNav{
+    position: fixed;
+    background-color: white;
+    color: #000000;
+    height: 100%;
+    width: 50%;
+    z-index: 100;
+    padding: 10px;
+}#mobileNav>ul>li{
+    margin: 10px 0;
+    font-family: 'Raleway', sans-serif;
+}.mobileNavLinks{
+    color: #000000;
+    border-bottom: black solid 1px;
+    padding-bottom: 5px;
+    padding-left: 4px;
+}.mobileNavLinks:hover{
+    background-color: #E1BCAB;
+}
+.HeaderIndex>#navbar>.navLink{
+    font-family: 'Raleway', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 14px;
+    font-style: normal;
+    padding-bottom: 13px;
+}#searchDiv{
+    width: 100%;
+    height: 55%;
+    position: absolute;
+    background-color: rgb(12, 12, 12);
+    display: flex;
+    align-items: center;
+    z-index: 5;
+    justify-content: center;
+}#searchDiv>div{
+    width: 80%;
+    display: flex;
+}#searchDiv>div>input{
+    width: 80%;
+    margin: auto 0;
+    height: 70%;
+    background-color:  rgba(12, 12, 12, 0.748);
+    color: #e59b7b;
+    font-size: 30px;
+    outline: none;
+    border: none;
+    
+}#closeBtnSearch{
+    color: white;
+    background-color: transparent;
+    border: none;
+    outline:none;
+    font-size: 25px;
+    cursor: pointer;
+    margin-top: 0;
+    width: 50px;
+}#searchDiv>div>a>img{
+    cursor: pointer;
+    margin-right: 10px;
+}
+ .dropDown{
+    visibility: hidden;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+li{
+    list-style: none;
+    cursor: pointer;
+}
+.dropDown{
+    padding:4px 0 4px 0;
+    margin-top:13px;
+}
+a{
+    text-decoration: none;
+}
+.dropDown>a>li{
+    list-style: none;
+    width: 150px;
+    padding:7px 0px 5px 10px;
+    border-bottom: 1px solid rgb(220, 220, 175);
+    color: #000000;
+}.dropDown>a>:hover{
+    background-color: #E1BCAB;
+    color: #000000;
+    cursor: pointer;
+}#collection:hover #collectionList{
+    visibility: visible;
+}#clothing:hover #clothingList{
+    visibility: visible;
+}#about:hover #aboutList{
+    visibility: visible;
+}.logoLink{
+    display: flex;
+    justify-content: center;
+}.logo{
+    width: 90%;
+    height: auto;
+}
+.headerIconRight{
+    width: 17px;
+    height: auto;
+    padding: 7px;
+    position: absolute;
+    padding: 7px 0;
+    left: 7px;
+}.headerIconRightHover{
+    width: 17px;
+    height: auto;
+    padding: 7px;
+}.headerIconRight:hover{
+    visibility: hidden;
+}.headerIconRightHover:hover{
+    visibility: visible;
+}#iconList{
+    display: flex;
+    align-items: center;
+}#iconList> div{
+    position: relative;
+}#iconList span>*{
+    position: absolute;
+}.iconBadge{
+    background-color: #DA7043;
+    padding: 0 5px;
+    outline: 0;
+    border: 0;
+    border-radius:100px ;
+    position: absolute;
+    z-index: 4;
+    top: 20px;
+    right: -1px;
+}#userList{margin-top: 1px;}
+#dropDownUser:hover #userList{
+    visibility: visible;
+
+}
+/* ----------------Other Component----------------- */
+.HeaderOther{
+    padding: 75px 10% 0;
+    width: 80%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 1px black;
+    z-index: 5;
+    background-color: #FFFFFF;
+    top: 0;
+}.HeaderOther > #navbar >.navLink{
+    font-family: 'Raleway', sans-serif;
+    color: #030303;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 13px;
+    font-style: normal;
+    padding-bottom: 13px;
+}.HeaderOther > #navbar >.navLink>.a{
+    color: black;
+}
+ul{
+    padding-left: 0;
+}
+@media (max-width:875px){
+    .navLinkM{
+       display: none;
+    }
+    
+}
+@media (min-width:875px){
+    .searchM{
+        display: none;
+
+    }
+    
+}
+@media(max-width:619px) {
+    #support{
+        display: none;
+    }
+    .HeaderIndex{
+        padding-top: 25px;
+    }.HeaderOther{
+        padding-top: 25px;
+    }
+}@media(max-width:469px){
+    .logo{
+        width: 50%;
+
+    }
+}

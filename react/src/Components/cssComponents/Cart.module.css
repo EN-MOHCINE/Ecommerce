@@ -1,0 +1,131 @@
+#CartOverlay{
+    background-color: rgba(190, 190, 190, 0.305);
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    font-family: 'Raleway';
+    z-index: 200;
+    justify-content: right;
+
+}
+#CartContainer{
+    height: 100vh;
+    background: white;
+    width:30%;
+    z-index: 11;
+    position: relative;
+
+}#Header{
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 5%;
+    height: 10%;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 600;
+}#Header>span{
+    cursor: pointer;
+}.productDiv{
+    border-bottom: black 1px solid;
+    display: flex;
+    padding: 10px;
+    
+}#Body{
+    width: 100%;
+    overflow: auto;
+    height: 60%;
+}.CartDetails{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 6px;
+}.img{
+    height: 150px;
+}.productName{
+    font-size: 19px;
+    font-weight: 500;
+}.counterContainer{
+    display: flex;
+    justify-content: space-between;
+}#counter{
+    display: flex;
+    align-items: center;
+    border: #bdbdbd solid 1px;
+    height: 30px;
+    width: 90px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+}#counter>div{
+    font-size:20px ;
+    font-family: Arial;
+    display: flex;
+    padding: 10px;
+}.btn{
+    height: 30px;
+    background-color: transparent;
+    color: black;
+    margin: 0;
+    width: 80%;
+    border: none;
+    outline: none;
+    margin: 0 auto;
+    cursor: pointer;
+}.btn:hover{
+    background-color: black;
+    color: white;
+}.sizeTitle{
+    text-transform: capitalize;
+    font-weight: 600;
+    display: block;
+}.close{
+    cursor: pointer;
+}.titleAndClose{
+    display: flex;
+    justify-content: space-between;
+}#footer{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}#priceDiv{
+    display: flex;
+    justify-content: space-between;
+}#totalText{
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+}#totalNumber{
+    font-size: 20px;
+    font-weight: 500;
+}#footer>button{
+    margin: 40px auto;
+    background-color: black;
+    color: white;
+    width: 80%;
+    border: none;
+    outline: none;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 40px;
+    cursor: pointer;
+}#footer{
+    display: flex;
+}@media(max-width:1043px){
+    #CartContainer{
+        width: 50%;
+    }
+}@media(max-width:620px){
+    #CartContainer{
+        width: 100%;
+
+        position: absolute;
+
+    }
+}

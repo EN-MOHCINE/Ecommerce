@@ -1,0 +1,22 @@
+.productImg {
+  width: 200px;
+  height: auto;
+}
+.divImg {
+  overflow: hidden;
+  width: 200px;
+  display: flex;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: first baseline;
+}
+.icon {
+  width: 30px;
+}
+

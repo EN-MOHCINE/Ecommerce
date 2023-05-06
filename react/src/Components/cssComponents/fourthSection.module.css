@@ -1,0 +1,24 @@
+#fourth{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin:0 auto;
+    font-family: 'Inter';
+}#fourth>div{
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+    cursor: pointer;
+    padding: 20px;
+    animation: backgroud-color 2s ease;
+}.LastTitle{
+    font-weight: 500;
+    font-size: 28px;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+@media(max-width:1000px){
+    #fourth{
+        display: none;
+    }
+}

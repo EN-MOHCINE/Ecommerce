@@ -1,0 +1,58 @@
+#spaceUp {
+  height: 180px;
+  width: 100%;
+}
+#infoContainer {
+  width: 90%;
+  margin: 5%;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+}
+#userInfos > div {
+  margin-top: 20px;
+  font-size: 17px;
+}
+#userTitle {
+  font-size: 27px;
+}
+#commandsInfos {
+  margin-top: 40px;
+}
+#commandsInfos > div {
+  margin-top: 20px;
+  font-size: 17px;
+}
+#btnConfirm {
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#picturesContain {
+  display: flex;
+}
+#sidePictures {
+  height: 400px;
+  overflow-y: auto;
+  margin-right: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-color: transparent;
+  width: 150px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+#sidePictures > img {
+  width: 150px;
+  height: auto;
+}
+#img {
+  width: 400px;
+  height: 400px;
+  margin: 0 0px;
+  object-fit: cover;
+}

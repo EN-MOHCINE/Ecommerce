@@ -1,0 +1,135 @@
+#third{
+    width: 80%;
+    margin: 0 auto 100px;
+}
+.container2{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px ;
+}.divImg {
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}.promotionDiv{
+    background-color: red;
+    color: white;
+    position: absolute;
+    transform: rotate(40deg);
+    right: -17px;
+    top: 10px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}.container2{
+    font-family: 'Open Sans', sans-serif;
+}
+.product>.divImg>a>img {
+    width: 100%;
+    height: 100%;
+}
+#category{
+    color: grey;
+    
+}.product {
+    position: relative;
+    width: 252px;
+    margin: 20px auto;
+    height: 535px;
+}.priceAfterPromo{
+    text-decoration-line: line-through;
+    color: gray;
+    font-size: 12px;
+    margin: 0;
+}.product>ul{
+    display: flex;
+    padding-left: 0;
+}.product li {
+    margin-right: 4px;
+    font-size: 10px;
+}#titleThird{
+    font-size: 40px;
+    margin: 20px auto;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tagsContainer{
+    border: 2px black solid;
+    width: min(80vw,600px);
+    height: 100px;
+}.tagsItem{
+    background-color: rgb(211, 211, 211);
+    display: inline-block;
+    border-radius: 20px;
+    padding: 8px;
+}.tagsContainer>input{
+    border: none;
+    outline :none;
+    flex-grow: 1;
+}.close{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}.overlay {
+    height: 70%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.product:hover .overlay {
+    opacity: 1;
+}.btnView {
+    background-color: black;
+    border: solid 1px black;
+    width: 40%;
+    height: 40px;
+    bottom: 10px;
+    left: 30%;
+    position: absolute;
+    color: white;
+    cursor: pointer;
+}.overlay>img{
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    width: 30px;
+}.Heart{
+    cursor: pointer;
+}
+@media(max-width:1000px){
+    .container2{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:20px ;
+    }
+}@media(max-width:631px){
+    .container2{
+        display: grid;
+        grid-template-columns:1fr;
+        gap:20px ;
+    }.product{
+        height: 350px;
+        width: auto;
+    }.overlay{
+        height: 78%;
+    }
+    .product>.divImg>a>img{
+        height:270px ;
+    }
+    .productName{
+        font-size: 17px;
+        font-weight: 600;
+    }
+    p , ul{
+        margin: 5px;
+    }
+}

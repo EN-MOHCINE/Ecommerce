@@ -1,0 +1,85 @@
+#spaceUp {
+    height: 180px;
+    width: 100%;
+  }
+  #filterContainer{
+    width: 80%;
+    margin: auto;
+  }
+  #btn{
+    background-color:  rgb(226, 226, 226);
+    color: rgb(3, 3, 3);
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }#btn:hover{
+    background-color: rgb(199, 199, 199);
+  }
+  #input{
+    border: none;
+    outline: none;
+    background-color:  rgb(226, 226, 226);
+    color: rgb(6, 6, 6);
+    padding: 8px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 200px;
+
+  }
+  #layout{
+    display: flex;
+   align-items: center;
+    justify-content: space-between;
+  }
+  .userDiv{
+   display: flex;
+   margin: 6px;
+  }
+  .name:hover{
+    background-color:rgb(199, 199, 199);
+
+  }
+  
+  .name{
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    background-color: rgb(226, 226, 226);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    
+  }
+  .editbtn{
+    border :none;
+    cursor: pointer;
+    width: 60px;
+    background-color: rgb(233, 226, 36);;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }#editDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width:40%;
+    font-family: "Raleway", sans-serif;
+margin: auto;
+  }
+  #title {
+    font-size: 24px;
+    font-family: "Raleway", sans-serif;
+    text-transform: capitalize;
+    margin: 20px;
+  }#close{
+    position: absolute;
+    right: 3px;
+    top :5px;
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+  }

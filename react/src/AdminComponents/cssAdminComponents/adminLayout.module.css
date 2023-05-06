@@ -1,0 +1,27 @@
+#dashboardContainer {
+  display: flex;
+  height: 100svh;
+}
+
+#navLayout {
+  
+  width: 166px;
+  height: 100svh;
+  background-color: #e1bcab;
+}
+#navLayout > ul {
+  padding-left: 15px;
+  margin-top: 180px;
+}
+#navLayout > ul > li {
+  margin: 10px;
+}
+#outletContainer {
+  width: 100%;
+  height: 100svh;
+  overflow-y:auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-color: transparent;
+  
+}
