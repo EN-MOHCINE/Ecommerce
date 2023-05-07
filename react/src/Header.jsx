@@ -3,11 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import "./Header.css";
-import Insta from "./photos/insta.svg";
-import Facebook from "./photos/fb.svg";
-import Zwa9a from "./photos/zwa9a.svg";
-import Logo from "./photos/whiteLogo.svg";
-import Blogo from "./photos/blackLogo.svg";
+
+import logo from "./photos/logo.svg";
 import Flesh from "./photos/fleshDrop.svg";
 import Search from "./photos/search.svg";
 import WCart from "./photos/cart.svg";
@@ -236,43 +233,6 @@ function Header() {
         ""
       )}
 
-      <div id="support">
-        <span>
-          <img src={World} alt="" />
-          <select
-            value={i18n.language}
-            onChange={(e) => {
-              i18n.changeLanguage(e.target.value);
-            }}
-          >
-            <option value="en">English</option>
-            <option value="fr">Frensh</option>
-            <option value="ar">Arabe</option>
-          </select>
-        </span>
-        <span className="HeaderSup news">
-          <img src={Zwa9a} alt="zwa9a" className="zwa9a" />
-          <div>
-            <p id={localStorage.getItem == "ar" ? "p1" : "p"}>
-              {t("support.news")}
-            </p>
-          </div>
-          <img src={Zwa9a} alt="zwa9a" className="zwa9a" />
-        </span>
-        <span>
-          <a href="https://www.instagram.com/b1unique/" target="_blank">
-            <img src={Insta} alt="svg inst" />
-          </a>
-          <a
-            href="https://web.facebook.com/profile.php?id=100089980466968"
-            target="_blank"
-          >
-            {" "}
-            <img src={Facebook} alt="svg fb" />
-          </a>
-        </span>
-      </div>
-
       <div className={styleHeader}>
         <div
           id="searchDiv"
@@ -280,185 +240,170 @@ function Header() {
           style={{ visibility: isClicked ? "visible" : "hidden" }}
         >
           <div>
-          <Link to={`products/search/${searchKey}`} id="icconLinksearch">
-            <img src={Search} onClick={SearchClick} />
-          </Link>
-          <input
-            type="text"
-            ref={focusIn}
-            value={searchKey}
-            onChange={(e) => setSearchKey(e.target.value)}
-          />
-          <button onClick={SearchClick} id="closeBtnSearch">
-            X
-          </button>
+            <Link to={`products/search/${searchKey}`} id="icconLinksearch">
+              <img src={Search} onClick={SearchClick} />
+            </Link>
+            <input
+              type="text"
+              ref={focusIn}
+              value={searchKey}
+              onChange={(e) => setSearchKey(e.target.value)}
+            />
+            <button onClick={SearchClick} id="closeBtnSearch">
+              X
+            </button>
           </div>
         </div>
         <ul id="navbar">
-          <li className="searchM" onClick={() => setNavMobile(true)}>
-            <img
-              src={
-                location.pathname == "/"
-                  ? stickyNav
-                    ? BhamburgerNav
-                    : hamburgerNav
-                  : BhamburgerNav
-              }
-            />
-          </li>
-          <li className="navLink navLinkM" id="searchList">
-            <img
-              src={
-                location.pathname == "/"
-                  ? stickyNav
-                    ? Bsearch
-                    : Search
-                  : Bsearch
-              }
-              onClick={callIT}
-            />
-          </li>
-          <li className="navLink navLinkM" id="collection">
-            {t("nav.0")} <img src={Flesh} alt="" />
-            <ul className="dropDown" id="collectionList">
-              {collectionName.length !== 0 ? (
-                collectionName.map((collection) => (
-                  <Link
-                    to={`/products/collections/collections/${collection.collection_id}`}
-                    key={collection.collection_id}
-                  >
-                    <li key={collection.collection_id}>
-                      {collection.collection_name}
-                    </li>
-                  </Link>
-                ))
-              ) : (
-                <li>accun result</li>
-              )}
-            </ul>
-          </li>
-          <li className="navLink navLinkM" id="clothing">
-            {t("nav.1")} <img src={Flesh} alt="" />
-            <ul className="dropDown" id="clothingList">
-              {categoriesName.length !== 0 ? (
-                categoriesName.map((category) => (
-                  <Link
-                    to={`/products/categories/categories/${category.category_id}`}
-                    key={category.category_id}
-                  >
-                    <li>{category.name_Category}</li>
-                  </Link>
-                ))
-              ) : (
-                <li>accune result</li>
-              )}
-            </ul>
-          </li>
           <Link to="/" className="navLink logoLink">
-            {location.pathname == "/" ? (
-              stickyNav ? (
-                <img src={Blogo} alt="svg inst" className="logo" />
-              ) : (
-                <img src={Logo} alt="svg inst" className="logo" />
-              )
-            ) : (
-              <img src={Blogo} alt="svg inst" className="logo" />
-            )}
+          <img src={logo} alt="svg inst" className="logo" />
           </Link>
-          <li to="/About" className="navLink navLinkM" id="about">
-            {t("nav.2")} <img src={Flesh} alt="" />
-            <ul className="dropDown" id="aboutList">
-              <Link>
-                <li>Our Story</li>
-              </Link>
-              <Link>
-                <li>Our Brand Values</li>
-              </Link>
-            </ul>
-          </li>
-          <li className="navLink navLinkM">
-            <Link className="a" to="/contact">
-              {t("nav.3")}
-            </Link>
-          </li>
-          <li className="navLink " id="iconList">
-            {localStorage.getItem("user_name") !== "undefined" || "" ? (
-              <span className="navLinkM">{userName}</span>
-            ) : (
-              ""
-            )}
-
-            <div
-              id={userName ? "dropDownUser" : ""}
-              className="navLinkM"
-              onClick={handleAuth}
-            >
-              <img
-                src={
-                  location.pathname == "/"
-                    ? stickyNav
-                      ? Buser
-                      : UserIcon
-                    : Buser
-                }
-                className="headerIconRight"
-              />
-              <img src={UserIconHover} className="headerIconRightHover" />
-              <ul className="dropDown" id="userList">
-                {localStorage.getItem("user_role") === "2" ? (
-                  <Link to={"/adminPannel/products"}>
-                    <li>Admin panel</li>
-                  </Link>
-                ) : (
-                  ""
-                )}
-                <Link>
-                  <li onClick={handleLogout}>commands</li>
-                </Link>
-                <a>
-                  <li onClick={handleLogout}>logout</li>
-                </a>
-              </ul>
-            </div>
-            <ul className="searchM">
-              <li className="navLink searchM" id="searchList">
+          <div id="navItems">
+            <div id="itemsRight">
+              <li className="searchM" onClick={() => setNavMobile(true)}>
                 <img
                   src={
                     location.pathname == "/"
                       ? stickyNav
-                        ? Bsearch
-                        : Search
-                      : Bsearch
+                        ? BhamburgerNav
+                        : hamburgerNav
+                      : BhamburgerNav
                   }
-                  onClick={callIT}
                 />
               </li>
-            </ul>
-            <div onClick={handleCart}>
-              <img
-                src={
-                  location.pathname == "/" ? (stickyNav ? Bcart : WCart) : Bcart
-                }
-                className="headerIconRight"
-              />
-              <img src={CartHover} className="headerIconRightHover" alt="" />
-              <span className="iconBadge">{countCart ? countCart : 0}</span>
+
+              <li className="navLink navLinkM" id="collection">
+                {t("nav.0")} <img src={Flesh} alt="" />
+                <ul className="dropDown" id="collectionList">
+                  {collectionName.length !== 0 ? (
+                    collectionName.map((collection) => (
+                      <Link
+                        to={`/products/collections/collections/${collection.collection_id}`}
+                        key={collection.collection_id}
+                      >
+                        <li key={collection.collection_id}>
+                          {collection.collection_name}
+                        </li>
+                      </Link>
+                    ))
+                  ) : (
+                    <li>accun result</li>
+                  )}
+                </ul>
+              </li>
+              <li className="navLink navLinkM" id="clothing">
+                {t("nav.1")} <img src={Flesh} alt="" />
+                <ul className="dropDown" id="clothingList">
+                  {categoriesName.length !== 0 ? (
+                    categoriesName.map((category) => (
+                      <Link
+                        to={`/products/categories/categories/${category.category_id}`}
+                        key={category.category_id}
+                      >
+                        <li>{category.name_Category}</li>
+                      </Link>
+                    ))
+                  ) : (
+                    <li>accune result</li>
+                  )}
+                </ul>
+              </li>
+
+              <li to="/About" className="navLink navLinkM" id="about">
+                {t("nav.2")} <img src={Flesh} alt="" />
+                <ul className="dropDown" id="aboutList">
+                  <Link>
+                    <li>Our Story</li>
+                  </Link>
+                  <Link>
+                    <li>Our Brand Values</li>
+                  </Link>
+                </ul>
+              </li>
+
+              <li className="navLink navLinkM">
+                <Link className="a" to="/contact">
+                  {t("nav.3")}
+                </Link>
+              </li>
             </div>
-            <div onClick={handleAuth} className="navLinkM">
-              <img
-                src={
-                  location.pathname == "/"
-                    ? stickyNav
-                      ? Bfavorite
-                      : Favorite
-                    : Bfavorite
-                }
-                className="headerIconRight"
-              />
-              <img src={FavoriteHover} className="headerIconRightHover" />
-              <span className="iconBadge">0</span>
+            <div>
+              <li className="navLink " id="iconList">
+                {localStorage.getItem("user_name") !== "undefined" || "" ? (
+                  <span className="navLinkM">{userName}</span>
+                ) : (
+                  ""
+                )}
+
+                <div
+                  id={userName ? "dropDownUser" : ""}
+                  className="navLinkM"
+                  onClick={handleAuth}
+                >
+                  <img
+                    src={
+                      Buser
+                    }
+                    className="headerIconRight"
+                  />
+                  <img src={UserIconHover} className="headerIconRightHover" />
+                  <ul className="dropDown" id="userList">
+                    {localStorage.getItem("user_role") === "2" ? (
+                      <Link to={"/adminPannel/products"}>
+                        <li>Admin panel</li>
+                      </Link>
+                    ) : (
+                      ""
+                    )}
+                    <Link>
+                      <li onClick={handleLogout}>commands</li>
+                    </Link>
+                    <a>
+                      <li onClick={handleLogout}>logout</li>
+                    </a>
+                  </ul>
+                </div>
+                <ul className="searchM">
+                  <li className="navLink searchM" id="searchList">
+                    <img
+                      src={
+                        location.pathname == "/"
+                          ? stickyNav
+                            ? Bsearch
+                            : Search
+                          : Bsearch
+                      }
+                      onClick={callIT}
+                    />
+                  </li>
+                </ul>
+                <div onClick={handleCart}>
+                  <img
+                    src={
+                       Bcart
+                    }
+                    className="headerIconRight"
+                  />
+                  <img
+                    src={CartHover}
+                    className="headerIconRightHover"
+                    alt=""
+                  />
+                  <span className="iconBadge">{countCart ? countCart : 0}</span>
+                </div>
+                <div onClick={handleAuth} className="navLinkM">
+                  <img
+                    src={
+                       Bfavorite
+                    }
+                    className="headerIconRight"
+                  />
+                  <img src={FavoriteHover} className="headerIconRightHover" />
+                  <span className="iconBadge">0</span>
+                </div>
+              </li>
             </div>
-          </li>
+          </div>
         </ul>
         <SignIn visibility={authDiv} setVisiblity={setAuthDiv} />
       </div>

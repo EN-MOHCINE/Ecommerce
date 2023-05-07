@@ -64,12 +64,12 @@ body{
     }
   }
 .HeaderIndex{
-    padding: 75px 10% 25px;
-    width: 80%;
+    padding: 25px;
+    width: 100%;
     position: fixed;
     display: flex;
     justify-content: center;
-    z-index: 1;
+    z-index: 5;
 }
 .blur{
     backdrop-filter: blur(7px);
@@ -81,6 +81,13 @@ body{
     margin: 0 auto;
     justify-content: space-between;
     padding-left: 0;
+    
+}#navItems{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
 }#mobileNav{
     position: fixed;
     background-color: white;
@@ -100,14 +107,17 @@ body{
 }.mobileNavLinks:hover{
     background-color: #E1BCAB;
 }
-.HeaderIndex>#navbar>.navLink{
-    font-family: 'Raleway', sans-serif;
-    color: #FFFFFF;
+.HeaderIndex #navItems>div>.navLink{
+    font-family: 'Jost';
     text-decoration: none;
     font-weight: 200;
-    font-size: 14px;
+    font-size: 15px;
     font-style: normal;
     padding-bottom: 13px;
+}#itemsRight{
+    width:50%;
+    display:flex;
+    justify-content: space-between;
 }#searchDiv{
     width: 100%;
     height: 55%;
@@ -159,6 +169,7 @@ li{
 }
 a{
     text-decoration: none;
+    color: #000000;
 }
 .dropDown>a>li{
     list-style: none;
@@ -206,7 +217,7 @@ a{
 }#iconList span>*{
     position: absolute;
 }.iconBadge{
-    background-color: #DA7043;
+    background-color: rgba(0, 0, 0, 0.288);
     padding: 0 5px;
     outline: 0;
     border: 0;
@@ -222,8 +233,8 @@ a{
 }
 /* ----------------Other Component----------------- */
 .HeaderOther{
-    padding: 75px 10% 0;
-    width: 80%;
+    padding: 25px;
+    width: 100%;
     position: fixed;
     display: flex;
     justify-content: center;
@@ -231,12 +242,11 @@ a{
     z-index: 5;
     background-color: #FFFFFF;
     top: 0;
-}.HeaderOther > #navbar >.navLink{
-    font-family: 'Raleway', sans-serif;
-    color: #030303;
+}.HeaderOther #navItems>div >.navLink{
+    font-family: 'Jost';
     text-decoration: none;
     font-weight: 200;
-    font-size: 13px;
+    font-size: 15px;
     font-style: normal;
     padding-bottom: 13px;
 }.HeaderOther > #navbar >.navLink>.a{
