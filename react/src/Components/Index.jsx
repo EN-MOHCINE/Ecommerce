@@ -6,16 +6,19 @@ import styles from "./cssComponents/indexFirst.module.css";
 import styles2 from "./cssComponents/indexSecond.module.css";
 import styles3 from "./cssComponents/thirdSection.module.css";
 import styles4 from "./cssComponents/fourthSection.module.css";
-import backgroudIndex from "../photos/backGroudIndex.jpg";
+
 import "../Header.css";
 import djalaba from "../photos/djalaba.jpg";
 import tkchita from "../photos/tkchita.jpg";
 import abaya from "../photos/abaya.jpg";
 import Heart from "../photos/Heart.svg";
+import Flesh from '../photos/fleshShop.svg'
 import Shipping from "../photos/Shipping.svg";
 import Support from "../photos/Support.svg";
 import Payment from "../photos/Pyment.svg";
-
+import Gunic from "../photos/Gunic.svg"
+import Bunic from "../photos/Bunic.svg"
+import Guy from "../photos/indexGuy.svg"
 function Index() {
   const [t, i18n] = useTranslation();
   const [products, setProducts] = useState([]);
@@ -32,16 +35,8 @@ function Index() {
   return (
     <div>
       <section id={styles.first}>
-        <div id={styles.overlay}></div>
-        <img
-          src={backgroudIndex}
-          id={styles.bgIndex}
-          style={
-            localStorage.getItem("transliton") === "ar"
-              ? { transform: "scaleX(-1)" }
-              : {}
-          }
-        />
+        <img src={Guy} id={styles.bgGuy}alt="" />
+        
         <div
           id={
             localStorage.getItem("transliton") === "ar"
@@ -50,17 +45,19 @@ function Index() {
           }
         >
           <span>
-            {t("bigTitle.0")} <br /> {t("bigTitle.1")}
-            <span id={styles.unique}>{t("bigTitle.2")}</span>
-            <div id={styles.subTitle}>{t("subTitle")}</div>
-          </span>
-          <Link
+          Street <br/>wears
+            <div id={styles.subTitle}>High quality cool tshirts for street fashion</div>
+            <Link
             to="/products/categories/categories/all"
             id={styles.discoverLink}
           >
-            <button id={styles.discover}>{t("discover")}</button>
+            <button id={styles.discover}> <span>Start shopping</span> <img src={Flesh} alt="" /></button>
           </Link>
+          </span>
+          
         </div>
+        <img src={Gunic} id={styles.Gunic} alt="" />
+        <img src={Bunic} id={styles.Bunic} alt="" />
       </section>
       <section id={styles2.second}>
         {/* <h1 id="title">Categories</h1> */}
