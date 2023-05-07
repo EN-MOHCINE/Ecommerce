@@ -11,6 +11,9 @@ import "../Header.css";
 import djalaba from "../photos/djalaba.jpg";
 import tkchita from "../photos/tkchita.jpg";
 import abaya from "../photos/abaya.jpg";
+import card1 from  "../photos/card1.png"; 
+import cardd3 from  "../photos/cardd3.png";
+import card2 from  "../photos/card2.png";
 import Heart from "../photos/Heart.svg";
 import Shipping from "../photos/Shipping.svg";
 import Support from "../photos/Support.svg";
@@ -62,6 +65,53 @@ function Index() {
           </Link>
         </div>
       </section>
+      <main className={styles2.main}>
+      <div className={styles2.card}>
+        <img className={styles2.img2} src={card1} alt="" />
+        <div className="card-content">
+          <h2 className={styles2.hh2}>
+            Card Heading
+          </h2>
+          <p className={styles2.pp1}>
+          voluptates cumque, veritatis atque nostrum corrupti 
+          </p>
+          <a href="#" className={styles2.button1}>
+            Find out more 
+            
+          </a>
+        </div>
+      </div>
+      <div className={styles2.card}>
+        <img className={styles2.img2} src={card2} alt="" />
+        <div className="card-content">
+          <h2 className={styles2.hh2}>
+            Card Heading
+          </h2>
+          <p className={styles2.pp1}>
+          voluptates cumque, veritatis atquea odio aut hic.
+          </p>
+          <a href="#" className={styles2.button1}>
+            Find out more 
+            
+          </a>
+        </div>
+      </div>
+      <div className={styles2.card}>
+        <img className={styles2.img2} src={cardd3} alt="" />
+        <div className="card-content">
+          <h2 className={styles2.hh2}>
+            Card Heading
+          </h2>
+          <p className={styles2.pp1}>
+          voluptates cumque, veritatis atque n Dicta odio aut hic.
+          </p>
+          <a href="#" className={styles2.button1}>
+            Find out more 
+            
+          </a>
+        </div>
+      </div>
+    </main>
       <section id={styles2.second}>
         {/* <h1 id="title">Categories</h1> */}
         <div className={styles2.container}>

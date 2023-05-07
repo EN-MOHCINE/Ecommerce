@@ -178,3 +178,117 @@
         width: 100%;
     };
 }
+
+/* Colors */
+
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    }
+    
+    .card {
+    width: 25%;
+    height: 36rem;
+    margin: 0 0.5rem;
+    /* border-radius: 25px; */
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    color: rgb(240, 240, 240);
+    /* box-shadow: 5px 10px 18px #888888; */
+    }
+
+.img2 {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.9;
+  transition: opacity .2s ease-out;
+}
+
+.hh2 {
+  position: absolute;
+  inset: auto auto 30px 30px;
+  margin: auto;
+  transition: inset .3s .3s ease-out;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 35px;
+}
+
+ .pp1,
+.button1{
+  position: absolute;
+  opacity: 0;
+  max-width: 80%;
+  transition: opacity .3s ease-out;
+}
+
+.pp1 {
+  inset: auto auto 140px  30px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+}
+
+.button1{
+    --bg: #000;
+    --hover-bg: #E1BCAB;
+    --hover-text: #000;
+    color: #fff;
+    border: 1px solid var(--bg);
+    border-radius: 4px;
+    padding: 0.8em 2em;
+    background: var(--bg);
+    transition: 0.2s;
+    cursor: pointer;
+    width: 150px;
+  inset: auto auto 40px 30px;
+  
+  text-decoration: none;
+}
+
+.button1:hover {
+    color: var(--hover-text);
+    transform: translate(-0.25rem,-0.25rem);
+    background: #f7f4f4;
+    box-shadow: -0.25rem 0.25rem var(--bg);
+  }
+  
+  .button1:active {
+    transform: translate(0);
+    box-shadow: none;
+  }
+.card:hover .hh2 {
+  inset: auto auto 220px 30px;
+  transition: inset .3s ease-out;
+  margin: auto;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 35px;
+}
+
+.card:hover .pp1,
+.card:hover .button1{
+  opacity: 1;
+  transition: opacity .5s .1s ease-in;
+}
+
+.card:hover .img2 {
+  transition: opacity .3s ease-in;
+  opacity: 0.5;
+}
+
+.materialsymbolsoutlined {
+  vertical-align: middle;
+}
