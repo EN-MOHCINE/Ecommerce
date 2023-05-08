@@ -21,7 +21,7 @@ function Footer() {
           <ul>
             <li className="li"> 
               <img src={mail} className='iccons lg'/>
-              Bunique@gmail.com
+              Unic@gmail.com
             </li>
           </ul>
           <p className="title follow" >Follow us on</p>

@@ -178,7 +178,7 @@ a{
     border-bottom: 1px solid rgb(220, 220, 175);
     color: #000000;
 }.dropDown>a>:hover{
-    background-color: #E1BCAB;
+    background-color: #7e7e7e;
     color: #000000;
     cursor: pointer;
 }#collection:hover #collectionList{
