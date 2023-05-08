@@ -81,7 +81,7 @@ function Category() {
                   ) : (
                     <p>{product.price} DH</p>
                   )}
-                  <ul>
+                  <ul className={styles.sizeList}>
                     {product.sizes.map((size, index) => (
                       <li key={index}>{size}</li>
                     ))}

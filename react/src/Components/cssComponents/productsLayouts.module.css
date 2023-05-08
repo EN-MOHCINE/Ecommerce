@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
 }#titleCategory{
-    color: #E1BCAB;
+    color: #a19e9d;
     margin-left: 8px;
 }#leftFilter{
     display: flex;
@@ -59,11 +59,11 @@ select{
     padding: 20px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #E1BCAB;
+    border-bottom: 1px solid #9b8f8a;
     width: 100%;
     cursor: pointer;
 }option li:hover{
-    background-color: #E1BCAB;
+    background-color: #7a716d;
     border: none;
     box-shadow: none;
   }
