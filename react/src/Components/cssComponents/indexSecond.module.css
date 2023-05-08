@@ -20,8 +20,7 @@
     
 }.box1{
     grid-area: box1;
-    top: 40px;
-    left: 40px;
+    
 }.box2{
 
     grid-area: box2;
@@ -181,19 +180,32 @@
 
 /* Colors */
 
+/* .main > div {
+    width: 2%;
+} */
 
 .main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    
+    
     padding: 50px;
     font-family: 'Roboto', sans-serif;
+    width: 80%;
+    margin-top: 30px;
+    margin:auto ;
+    display: flex;
+    display: grid;
+    grid-gap: 25px 25px;
+    grid-auto-rows: max(200px);
+    grid-template-areas:
+        "box1 box2 box2 box5"
+        "box1 box3 box4 box5 "
+        
+    
     }
     
     .card {
-    width: 25%;
-    height: 36rem;
+    width:100%;
+    height: auto;
     margin: 0 0.5rem;
     /* border-radius: 25px; */
     overflow: hidden;
@@ -226,6 +238,10 @@
   font-size: 35px;
 }
 
+main > .box4 + .box3 {
+    height: auto;
+
+}
  .pp1,
 .button1{
   position: absolute;
@@ -277,6 +293,10 @@
   font-weight: 500;
   font-size: 35px;
 }
+
+/* .cardContent{
+    height: 100%;
+} */
 
 .card:hover .pp1,
 .card:hover .button1{

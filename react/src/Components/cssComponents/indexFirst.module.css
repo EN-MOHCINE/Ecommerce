@@ -75,8 +75,14 @@
   align-items: center;
   margin-right: 7px;
 }
-#discover:hover #discover>span{
-  margin-right: 10px;
+#discover:hover #btnShoping{
+  margin-right: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+}
+#discover:hover {
+  
+  background-color: rgba(213, 207, 207, 0.321);
 }
 #ar {
   color: white;
