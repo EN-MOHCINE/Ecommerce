@@ -54,7 +54,7 @@ function Index() {
             to="/products/categories/categories/all"
             id={styles.discoverLink}
           >
-            <button id={styles.discover}> <span>Start shopping</span> <img src={Flesh} alt="" /></button>
+            <button id={styles.discover}> <span id={styles.btnShoping}>Start shopping</span> <img src={Flesh} alt="" /></button>
           </Link>
           </span>
           
@@ -62,53 +62,87 @@ function Index() {
         <img src={Gunic} id={styles.Gunic} alt="" />
         <img src={Bunic} id={styles.Bunic} alt="" />
       </section>
-      <main className={styles2.main}>
-      <div className={styles2.card}>
-        <img className={styles2.img2} src={card1} alt="" />
-        <div className="card-content">
-          <h2 className={styles2.hh2}>
-            Card Heading
-          </h2>
-          <p className={styles2.pp1}>
-          voluptates cumque, veritatis atque nostrum corrupti 
-          </p>
-          <a href="#" className={styles2.button1}>
-            Find out more 
-            
-          </a>
-        </div>
-      </div>
-      <div className={styles2.card}>
-        <img className={styles2.img2} src={card2} alt="" />
-        <div className="card-content">
-          <h2 className={styles2.hh2}>
-            Card Heading
-          </h2>
-          <p className={styles2.pp1}>
-          voluptates cumque, veritatis atquea odio aut hic.
-          </p>
-          <a href="#" className={styles2.button1}>
-            Find out more 
-            
-          </a>
-        </div>
-      </div>
-      <div className={styles2.card}>
-        <img className={styles2.img2} src={cardd3} alt="" />
-        <div className="card-content">
-          <h2 className={styles2.hh2}>
-            Card Heading
-          </h2>
-          <p className={styles2.pp1}>
-          voluptates cumque, veritatis atque n Dicta odio aut hic.
-          </p>
-          <a href="#" className={styles2.button1}>
-            Find out more 
-            
-          </a>
-        </div>
-      </div>
-    </main>
+
+          <section id={styles2.second}>
+            <main className={styles2.main}>
+                <div className={`${styles2.card} ${styles2.box1}`}   >
+                  <img className={styles2.img2} src={card2} alt="" />
+                  <div className="card-content">
+                    <h2 className={styles2.hh2}>
+                      Card Heading
+                    </h2>
+                    <p className={styles2.pp1}>
+                    voluptates cumque, veritatis atque nostrum corrupti 
+                    </p>
+                    <a href="#" className={styles2.button1}>
+                      Find out more 
+                      
+                    </a>
+                  </div>
+                </div>
+                <div className={`${styles2.card} ${styles2.box2}`}>
+                  <img className={styles2.img2} src={card1} alt="" />
+                  <div className={styles2.cardContent}>
+                    <h2 className={styles2.hh2}>
+                      Card Heading
+                    </h2>
+                    <p className={styles2.pp1}>
+                    voluptates cumque, veritatis atquea odio aut hic.
+                    </p>
+                    <a href="#" className={styles2.button1}>
+                      Find out more 
+                      
+                    </a>
+                  </div>
+                </div>
+                <div className={`${styles2.card} ${styles2.box3}`}>
+                  <img className={styles2.img2} src={cardd3} alt="" />
+                  <div className={styles2.cardContent}>
+                    <h2 className={styles2.hh2}>
+                      Card Heading
+                    </h2>
+                    <p className={styles2.pp1}>
+                    voluptates cumque, veritatis atque n Dicta odio aut hic.
+                    </p>
+                    <a href="#" className={styles2.button1}>
+                      Find out more 
+                      
+                    </a>
+                  </div>
+                </div>
+                <div className={`${styles2.card} ${styles2.box4}`}>
+                  <img className={styles2.img2} src={cardd3} alt="" />
+                  <div className={styles2.cardContent}>
+                    <h2 className={styles2.hh2}>
+                      Card Heading
+                    </h2>
+                    <p className={styles2.pp1}>
+                    voluptates cumque, veritatis atque n Dicta odio aut hic.
+                    </p>
+                    <a href="#" className={styles2.button1}>
+                      Find out more 
+                      
+                    </a>
+                  </div>
+                </div>
+                <div className={`${styles2.card} ${styles2.box5}`}>
+                  <img className={styles2.img2} src={cardd3} alt="" />
+                  <div className="card-content">
+                    <h2 className={styles2.hh2}>
+                      Card Heading
+                    </h2>
+                    <p className={styles2.pp1}>
+                    voluptates cumque, veritatis atque n Dicta odio aut hic.
+                    </p>
+                    <a href="#" className={styles2.button1}>
+                      Find out more 
+                      
+                    </a>
+                  </div>
+                </div>
+            </main>
+          </section>
+
         {/* <h1 id="title">Categories</h1> */}
       {/* <section id={styles2.second}>
         <div className={styles2.container}>
