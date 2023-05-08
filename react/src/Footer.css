@@ -47,9 +47,8 @@
     padding: 20px 0;
 }#logoSec>img{
     width: 150px;
-}a{
-    color: white;
-}@media(max-width:420px){
+}
+@media(max-width:420px){
     #logoSec>img{
         width: 50px;
     }

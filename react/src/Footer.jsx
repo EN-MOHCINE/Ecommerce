@@ -7,13 +7,13 @@ import tiktok from "./photos/tiktok.svg";
 import facebook from "./photos/facebook.svg";
 import whatsapp from "./photos/whatsapp.svg";
 import send from "./photos/send.svg";
-import BUnique from './photos/BuniqueBig.svg'
+import logo from "./photos/a.png";
 import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="footer">
       <div id="logoSec">
-          <img src={BUnique}/>
+          <img src={logo}/>
       </div>
       <div id="containerF">
         <div>
