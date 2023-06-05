@@ -24,6 +24,7 @@
     "react-svg": "^16.1.4",
     "react-tag-input": "^6.8.1",
     "react-toastify": "^9.1.2",
+    "reactjs-popup": "^2.0.5",
     "styled-components": "^5.3.9",
     "typeface-raleway": "^1.1.13"
   },

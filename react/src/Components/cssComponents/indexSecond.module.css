@@ -140,6 +140,11 @@
     transform: translate(0);
     box-shadow: none;
   }
+  .titre_cat{
+    font-family: Josefin Sans;
+    font-size: xx-large;
+    font-weight: 600;
+  }
   @media(max-width:1000px){
     .container{
         display: flex;

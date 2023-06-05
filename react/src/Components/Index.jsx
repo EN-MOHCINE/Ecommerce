@@ -21,6 +21,7 @@ import Support from "../photos/Support.svg";
 import Payment from "../photos/Pyment.svg";
 import Gunic from "../photos/Gunic.svg"
 import Bunic from "../photos/Bunic.svg"
+import Decore from "../photos/Decore.svg"
 import Guy from "../photos/indexGuy.svg"
 function Index() {
   const [t, i18n] = useTranslation();
@@ -61,10 +62,13 @@ function Index() {
         </div>
         <img src={Gunic} id={styles.Gunic} alt="" />
         <img src={Bunic} id={styles.Bunic} alt="" />
+        <img src={Decore} id={styles.decore} alt="" />
       </section>
 
           <section id={styles2.second}>
+            <h1 className={styles2.titre_cat} >Available Categories  </h1>
             <main className={styles2.main}>
+              
                 <div className={`${styles2.card} ${styles2.box1}`}   >
                   <img className={styles2.img2} src={card2} alt="" />
                   <div className="card-content">
