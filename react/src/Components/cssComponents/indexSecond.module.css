@@ -140,6 +140,11 @@
     transform: translate(0);
     box-shadow: none;
   }
+  .titre_cat{
+    font-family: Josefin Sans;
+    font-size: xx-large;
+    font-weight: 600;
+  }
   @media(max-width:1000px){
     .container{
         display: flex;
@@ -251,11 +256,25 @@ main > .box4 + .box3 {
 }
 
 .pp1 {
-  inset: auto auto 140px  30px;
-  font-weight: 600;
-  font-size: 20px;
+  inset: 20% 10%  0%   10% ;
+ 
   color: #000000;
 }
+.pp11 {
+  inset: 60% 7%  0%   11% ;
+  color: #000000;
+}
+
+
+.pp2 {
+  position: absolute;
+  font-weight: 600; 
+  font-size: 30px;
+  color: #000000;
+}
+
+
+
 
 .button1{
     --bg: #000;
@@ -285,23 +304,39 @@ main > .box4 + .box3 {
     transform: translate(0);
     box-shadow: none;
   }
-.card:hover .hh2 {
+
+/* .card:hover .hh2 {
   inset: auto auto 220px 30px;
   transition: inset .3s ease-out;
   margin: auto;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 35px;
-}
+} */
 
 /* .cardContent{
-    height: 100%;
+    
+        display: flex;
+        align-items: center;
+    
 } */
 
 .card:hover .pp1,
 .card:hover .button1{
   opacity: 1;
   transition: opacity .5s .1s ease-in;
+}
+.card:hover .pp11,
+.card:hover .button1{
+  opacity: 1;
+  transition: opacity .5s .1s ease-in;
+}
+.pp11,
+.button1{
+  position: absolute;
+  opacity: 0;
+  max-width: 80%;
+  transition: opacity .3s ease-out;
 }
 
 .card:hover .img2 {

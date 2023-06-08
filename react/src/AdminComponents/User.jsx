@@ -5,10 +5,13 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 function User(props) {
   const [data, setData] = useState([]);
+
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [numberOfPages, setNumberOfPages] = useState(1);
   const [page, setPage] = useState(1);
+
+  
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -24,11 +27,23 @@ function User(props) {
         console.error(error);
       });
   }, [props]);
+ 
+ 
+
   function handleClick(idUser) {
     props.userEdit(
       true,
       data.find((data) => data.user_id === idUser)
     );
+  }
+  function datauser(data) {
+    
+    props.showuser(data) 
+  }
+  function order_user(id){
+    
+    
+    props.order_data(id)
   }
   return (
     <>
@@ -43,10 +58,24 @@ function User(props) {
                       <span>{data.name}</span> <span>{data.name_role}</span>{" "}
                     </div>{" "}
                     <button
+                        className={styles.btnCommands}
+                        onClick={() => order_user(data.user_id)}
+                      >
+                        Commands
+
+                    </button>
+                    <button
+                      className={styles.btnshow}
+                      onClick={() => datauser(data)}
+                      >
+                        More
+
+                    </button>
+                    <button
                       className={styles.editbtn}
                       onClick={() => handleClick(data.user_id)}
                     >
-                      edit
+                      Edit
                     </button>
                   </div>
                 ))}

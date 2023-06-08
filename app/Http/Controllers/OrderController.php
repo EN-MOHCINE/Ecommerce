@@ -36,7 +36,19 @@ class OrderController extends Controller
         
         confirmOreders::where('id', $request->orderId)->delete();
         return 'the command was confirmed successfully';
-       
-        
     }
+
+    function  orders_user(Request $request){
+
+        $orders = Order::select('orders.*' )
+        ->join('users', 'users.user_id', '=', 'orders.user_id')
+        ->where('orders.user_id', $request->id)
+        ->where('users.role_id', 2)
+        ->get();
+
+
+        return $orders;
+
+    }
+    
 }

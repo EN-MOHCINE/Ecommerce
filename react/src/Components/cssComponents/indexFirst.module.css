@@ -101,6 +101,17 @@
 #ar > span {
   margin-top: 300px;
 }
+
+#decore{
+  margin: 0;
+  position: absolute;
+  bottom: -300px;
+  height: 455px;
+  width: 1700px;
+  right: 0px;
+  left: 0;
+  z-index: 3;
+}
 @media (max-width: 1000px) {
   #headTxt {
     height: 65svh;

@@ -14,13 +14,13 @@ class RolesController extends Controller
     }
     
     function userFilter(Request $request){
-        $users = DB::table('users')->join('roles','roles.role_id','users.role_id')->select('user_id','name', 'name_role');
+        $users = DB::table('users')->join('roles','roles.role_id','users.role_id')->select('user_id','name',"email","address","phone","code_postal", 'name_role');
         if ($request->role) {
             $users->where('users.role_id',$request->role);
         }
         if ($request->name!==null && $request->name!== 'all') {
-              $users->where('name',$request->name);
-             }
+                $users->where('name',$request->name);
+            }
 
         $results=$users->paginate(20);
         return $results;

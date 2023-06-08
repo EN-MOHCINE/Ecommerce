@@ -1,9 +1,11 @@
 import axios from "axios";
+import PaymentForm from "./paymentChoice";
 import React, { useEffect, useState } from "react";
 import styles from "./cssComponents/CheckOut.module.css";
 import { useNavigate } from "react-router-dom";
 import Loading from "./loading";
 import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 function CheckOut(props) {
   const [products, setProducts] = useState([]);
@@ -183,8 +185,10 @@ function CheckOut(props) {
                   />
                 </label>
               </div>
+               <PaymentForm />
             </div>
           </div>
+         
           <div id={styles.productSelectedDiv}>
             <div id={styles.cartContainer}>
               <div id={styles.header}>
