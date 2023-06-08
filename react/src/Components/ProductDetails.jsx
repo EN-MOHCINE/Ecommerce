@@ -127,9 +127,9 @@ function ProductDetails() {
                   style={{
                     border:
                       selectedSizeId === item.product_id
-                        ? " solid 2px #DA7043"
-                        : "",
-                    color: selectedSizeId === item.product_id ? "#DA7043" : "",
+                        ? " solid 3px black"
+                        : "solid 1px black",
+                    color: selectedSizeId === item.product_id ? "black" : "solid 1px black",
                   }}
                 >
                   {item.name_Size}

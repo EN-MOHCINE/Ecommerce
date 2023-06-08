@@ -255,11 +255,14 @@ function Header() {
           </div>
         </div>
         <ul id="navbar">
+        
           <Link to="/" className="navLink logoLink">
           <img src={logo} alt="svg inst" className="logo" />
           </Link>
           <div id="navItems">
+          
             <div id="itemsRight">
+            
               <li className="searchM" onClick={() => setNavMobile(true)}>
                 <img
                   src={
@@ -327,8 +330,18 @@ function Header() {
                 </Link>
               </li>
             </div>
+            
             <div>
+            
               <li className="navLink " id="iconList">
+              <li className="navLink navLinkM" id="searchList">
+            <img
+              src={
+                   Bsearch
+              }
+              onClick={callIT}
+            />
+          </li>
                 {localStorage.getItem("user_name") !== "undefined" || "" ? (
                   <span className="navLinkM">{userName}</span>
                 ) : (

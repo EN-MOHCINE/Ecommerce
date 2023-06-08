@@ -49,15 +49,6 @@ function Category() {
             {products ? (
               products.map((product) => (
                 <div className={styles.product} key={product.id}>
-                  <div className={styles.overlay}>
-                    <img src={Heart} className={styles.Heart} />
-                    <button
-                      className={styles.btnView}
-                      onClick={() => navigatTo(product.id)}
-                    >
-                      view
-                    </button>
-                  </div>
                   <div className={styles.divImg} onClick={() => navigatTo(product.id)}>
                     {product.promotion>0?
                     <div className={styles.promotionDiv}>

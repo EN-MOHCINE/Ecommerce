@@ -44,6 +44,7 @@ function SignIn(props) {
       props.setVisiblity(false);
       setLoading(false)
     } catch (error) {
+      setLoading(false)
       setIsError(true);
       if (error.response) {
         setErrors(error.response.data.errors);

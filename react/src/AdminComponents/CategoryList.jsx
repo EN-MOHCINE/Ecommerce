@@ -135,7 +135,7 @@ function CategoryList() {
         <div>
           <div id={styles.editDiv}>
             <span id={styles.title}>Add new Category</span>
-            <span id={styles.close} onClick={()=>setAddtDiv(false)}>X</span>
+            <span id={styles.close} onClick={()=>setAddDiv(false)}>X</span>
             <div>
               <div>
                 

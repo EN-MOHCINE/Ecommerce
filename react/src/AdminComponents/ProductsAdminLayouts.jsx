@@ -12,6 +12,10 @@ function ProductsAdminLayout() {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState("all");
+  const [collectionName, setCollectionName] = useState([]);
+  const [categoriesName, setCategoriesName] = useState([]);
+  const [collectionSelect, setCollectionSelect] = useState('all');
+  const [categorySelect, setCategorySelect] = useState('all');
   const navigate = useNavigate();
   useEffect(() => {
     setLoading(true);
@@ -36,16 +40,35 @@ function ProductsAdminLayout() {
     axios.get("http://127.0.0.1:8000/api/size").then((response) => {
       setSizes(response.data);
     });
+    axios
+      .get("http://127.0.0.1:8000/api/dropDownCollections")
+      .then((response) => {
+        setCollectionName(response.data);
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    axios
+      .get("http://127.0.0.1:8000/api/dropDownCategories")
+      .then((response) => {
+        setCategoriesName(response.data);
+      });
   }, [param]);
   const handleSizeChange = (event) => {
     setSize(event.target.value);
   };
-
   const handlePriceChange = (event) => {
     setPrice(event.target.value);
   };
   const handleStock = (event) => {
     setStock(event.target.value);
+  };
+  const handleCategory = (event) => {
+    setCategorySelect(event.target.value);
+  };
+  const handleCollection = (event) => {
+    setCollectionSelect(event.target.value);
   };
   return (
     <>
@@ -96,9 +119,32 @@ function ProductsAdminLayout() {
             <option value="1">in Stock</option>
             <option value="0">out of Stock</option>
           </select>
+          <select name="category" id="category" value={categorySelect} onChange={handleCategory}  className={styles.filter}>
+            <option value="all" disabled>
+              Category
+            </option>
+            <option value="all">All</option>
+            
+            {categoriesName.map((category) => (
+              <option key={category.category_id} value={category.category_id}>
+                {category.name_Category}
+              </option>
+            ))}
+          </select>
+          <select name="collection" id="collection" value={collectionSelect} onChange={handleCollection}  className={styles.filter}>
+            <option value="all" disabled>
+              Collection
+            </option>
+            <option value="all">All</option>
+            {collectionName.map((collection) => (
+              <option key={collection.collection_id} value={collection.collection_id}>
+                {collection.collection_name}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
-          <Outlet context={[size,price,stock]} />
+          <Outlet context={[size,price,stock,categorySelect,collectionSelect]} />
         </div>
       </div>
     </>

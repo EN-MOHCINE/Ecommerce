@@ -139,7 +139,7 @@ function SizeList() {
         {addDiv ? (
           <div>
             <div id={styles.editDiv}>
-              <span id={styles.title}>Edit Size</span>
+              <span id={styles.title}>Create New Size</span>
               <span id={styles.close} onClick={() => setAddDiv(false)}>
                 X
               </span>

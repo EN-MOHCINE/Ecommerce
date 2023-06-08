@@ -35,6 +35,7 @@ function SignUp(props) {
         setLoading(false)
       })
       .catch((error) => {
+        setLoading(false)
         setIsError(true);
         setErrors(error.response.data.errors);
       });

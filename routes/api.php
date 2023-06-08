@@ -35,7 +35,7 @@ Route::get('size',[SizesController::class,'getSize']);
 Route::post('Product',[ProductController::class,'addProduct']);
 Route::get('ProductDetails/{id}',[ProductController::class,'productDetails']);
 Route::get('category/{id?}/{size?}/{price?}/{stock?}',[ProductController::class,'Product']);
-Route::get('allProducts/{size?}/{price?}/{stock?}',[ProductController::class,'allProducts']);
+Route::get('allProducts/{size?}/{price?}/{stock?}/{categorySelect?}/{collectionSelect?}',[ProductController::class,'allProducts']);
 Route::get('collection/{id?}/{size?}/{price?}/{stock?}',[CollectionController::class,'Product']);
 Route::post('signUp',[UserController::class,'register']);
 Route::post('signIn',[UserController::class,'login']);

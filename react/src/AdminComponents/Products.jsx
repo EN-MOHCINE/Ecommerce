@@ -10,7 +10,7 @@ import DeleteIcon from '../photos/delete.svg';
 import Edit from '../photos/edit.svg';
 import Stack from "@mui/material/Stack";
 function Products() {
-    const [size, price,stock] = useOutletContext();
+  const [size, price,stock,categorySelect,collectionSelect] = useOutletContext();
   const param = useParams();
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
@@ -23,7 +23,7 @@ function Products() {
  
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/allProducts/${size}/${price}/${stock}?page=${page}`)
+      .get(`http://127.0.0.1:8000/api/allProducts/${size}/${price}/${stock}/${categorySelect}/${collectionSelect}?page=${page}`)
       .then((response) => {
         setProducts(response.data.data);
         setNumberOfPages(response.data.last_page);
@@ -31,7 +31,7 @@ function Products() {
       .catch((error) => {
         console.error(error);
       });
-  }, [param, size, price, stock, page, deletedProductId]);
+  }, [param, size, price, stock,categorySelect,collectionSelect, page, deletedProductId]);
 
   function navigatTo(p) {
     navigate(`/productDetails/${p}`);

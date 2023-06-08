@@ -199,7 +199,7 @@ class ProductController extends Controller
 
         return response()->json($result);
     }
-    function allProducts($size = null, $price = null, $stock = null)
+    function allProducts($size = null, $price = null, $stock = null, $categorySelect=null,$collectionSelect=null)
     {
         $allproducts = DB::table('products')
             ->join('sizes', 'sizes.size_id', '=', 'products.size_id')
@@ -219,6 +219,12 @@ class ProductController extends Controller
             } else {
                 $allproducts->where('products.quantity', 0);
             }
+        }
+        if($collectionSelect!=='all'&& $collectionSelect!== null){
+            $allproducts->where('collections.collection_id', (int) $collectionSelect);
+        }
+        if($categorySelect!=='all'&& $categorySelect!== null){
+            $allproducts->where('categories.category_id', (int) $categorySelect);
         }
         $allproducts = $allproducts->paginate(9);
         return $allproducts;

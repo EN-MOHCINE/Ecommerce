@@ -213,7 +213,7 @@ function Index() {
         </div>
         <button className={styles2.button}>Show more</button>
       </section> */}
-      {/* <section id={styles3.third}>
+      <section id={styles3.third}>
         <div id={styles3.titleThird}>Newest</div>
         <div className={styles3.container2}>
           {products !== undefined
@@ -255,8 +255,8 @@ function Index() {
               ))
             : ""}
         </div>
-      </section> */}
-      {/* <section id={styles4.fourth}>
+      </section>
+      <section id={styles4.fourth}>
         <div>
           <img src={Shipping} />
           <div>
@@ -279,7 +279,7 @@ function Index() {
             hours a day, 7 days a week
           </div>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 }
