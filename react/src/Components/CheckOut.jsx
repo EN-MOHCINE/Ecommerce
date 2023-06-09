@@ -1,11 +1,13 @@
 import axios from "axios";
-import PaymentForm from "./paymentChoice";
+import PaymentForm from "./PaymentChoice";
 import React, { useEffect, useState } from "react";
 import styles from "./cssComponents/CheckOut.module.css";
 import { useNavigate } from "react-router-dom";
 import Loading from "./loading";
 import { ToastContainer, toast } from "react-toastify";
-
+import paypalLogo from "../photos/Paypal_2014_logo.png";
+import MasterLogo from "../photos/MasterCard_Logo.png";
+import style from "./cssComponents/choice.module.css";
 import "react-toastify/dist/ReactToastify.css";
 function CheckOut(props) {
   const [products, setProducts] = useState([]);
@@ -19,6 +21,15 @@ function CheckOut(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState([]);
   const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState("");
+  const [emailPaypal, setEmailPaypal] = useState("");
+  const [passwordPaypal, setPasswordPaypal] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expDate, setExpDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:8000/api/Cart/${localStorage.getItem("user_id")}`)
@@ -54,16 +65,6 @@ function CheckOut(props) {
           setLoading(false);
           setError(response.data.message);
         } else {
-          toast.success(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
           setAddress("");
           setCity("");
           setLname("");
@@ -74,25 +75,34 @@ function CheckOut(props) {
           setLoading(false);
           setEmail("");
           setError([]);
+          PaymentMethod();
         }
       });
   };
+  function PaymentMethod() {
+    navigate("/paymentMethod", {
+      state: {
+        name: Fname,
+        Lname: Lname,
+        streetAdress: Address,
+        postCode: PostCode,
+        city: City,
+        phone: Phone,
+        email: Email,
+        total: products.map((product) => ({
+          product_id: product.product_id,
+          quantity:product.quantity,
+          total:
+            (product.price - product.price * (product.promotion / 100)) *
+            product.quantity,
+        })),
+      },
+    });
+  }
   return (
     <>
       <Loading loading={loading} />
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <ToastContainer />
+
       <div id={styles.spaceUp}></div>
       <div id={styles.container}>
         <span>CHECK OUT</span>
@@ -185,10 +195,10 @@ function CheckOut(props) {
                   />
                 </label>
               </div>
-               <PaymentForm />
+              <br />
             </div>
           </div>
-         
+
           <div id={styles.productSelectedDiv}>
             <div id={styles.cartContainer}>
               <div id={styles.header}>
@@ -211,7 +221,11 @@ function CheckOut(props) {
                             x{product.quantity}
                           </span>
                         </span>
-                        <span>{product.price-(product.price * (product.promotion / 100))} DH</span>
+                        <span>
+                          {product.price -
+                            product.price * (product.promotion / 100)}{" "}
+                          DH
+                        </span>
                       </div>
                     ))
                   : ""}
@@ -224,7 +238,10 @@ function CheckOut(props) {
                       {products
                         ? products.reduce(
                             (total, product) =>
-                              total + (product.price-(product.price * (product.promotion / 100))) * product.quantity,
+                              total +
+                              (product.price -
+                                product.price * (product.promotion / 100)) *
+                                product.quantity,
                             0
                           )
                         : 0}
@@ -244,7 +261,10 @@ function CheckOut(props) {
                     {products
                       ? products.reduce(
                           (total, product) =>
-                            total + (product.price-(product.price * (product.promotion / 100))) * product.quantity,
+                            total +
+                            (product.price -
+                              product.price * (product.promotion / 100)) *
+                              product.quantity,
                           0
                         )
                       : 0}

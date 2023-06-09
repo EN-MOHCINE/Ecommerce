@@ -66,4 +66,4 @@ Route::patch('size/{id}',[SizesController::class,'updateSizes']);
 Route::get('roles',[RolesController::class,'getRoles']);
 Route::patch('roles/{id}',[UserController::class,'updateRole']);
 Route::get('orders_user/{id}' ,[OrderController ::class ,"orders_user"]) ;
-
+Route::post('paymentMethod',[ConfirmOredersController::class,'confirmPaymentMethod']);

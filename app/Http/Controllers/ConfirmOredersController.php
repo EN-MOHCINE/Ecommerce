@@ -34,24 +34,24 @@ class ConfirmOredersController extends Controller
                 'message' => $validator->errors()->all()
             ]);
         }
-        foreach ($request->products as $product) {
-            confirmOreders::create([
-                'user_id' => $request->user_id,
-                'product_id' => json_decode($product)->product_id,
-                'quantity' => json_decode($product)->quantity,
-            ]);
-        }
-        User::where('user_id', $request->user_id)->update([
-            'address' => $request->streetAdress,
-            'code_postal' => $request->postCode,
-            'phone' => $request->phone,
-            'city' => $request->city
-        ]);
+        // foreach ($request->products as $product) {
+        //     confirmOreders::create([
+        //         'user_id' => $request->user_id,
+        //         'product_id' => json_decode($product)->product_id,
+        //         'quantity' => json_decode($product)->quantity,
+        //     ]);
+        // }
+        // User::where('user_id', $request->user_id)->update([
+        //     'address' => $request->streetAdress,
+        //     'code_postal' => $request->postCode,
+        //     'phone' => $request->phone,
+        //     'city' => $request->city
+        // ]);
         
 
         return response()->json([
             'status' => 'success',
-            'message' => 'waiting the confirmation message'
+            // 'message' => 'waiting the confirmation message'
         ]);
     }
 
@@ -71,5 +71,29 @@ class ConfirmOredersController extends Controller
         ->where('confirm_oreders.id',$id)
         ->get();
         return $command;
+    }
+    function confirmPaymentMethod(Request $request){
+        $method = ($request->selectedOption === 'creditCard') ? $request->selectedOption : 'cashOnDelivery';
+        foreach ($request->products as $product) {
+            confirmOreders::create([
+                'user_id' => $request->user_id,
+                'product_id' => json_decode($product)->product_id,
+                'quantity' => json_decode($product)->quantity,
+                'total'=>json_decode($product)->total,
+                'method' => $method
+            ]);
+        }
+        if ($method==='creditCard') {
+           
+
+        }
+        User::where('user_id', $request->user_id)->update([
+            'address' => $request->streetAdress,
+            'code_postal' => $request->postCode,
+            'phone' => $request->phone,
+            'city' => $request->city
+        ]);
+        
+        return $request;
     }
 }
