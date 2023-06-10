@@ -149,7 +149,7 @@ function ProductDetails() {
               </div>
             </div>
             <div>
-              <button id={styles.btnWishlist}>add to wishlist</button>
+              <button id={styles.btnWishlist}>Shop now</button>
               <button id={styles.addCartBtn} onClick={cartToggle}>
                 add to cart
               </button>

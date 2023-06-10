@@ -13,5 +13,7 @@ class confirmOreders extends Model
         'product_id',
         'quantity',
         'confirmed',
+        "method",
+        "total"
     ];
 }

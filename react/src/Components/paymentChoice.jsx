@@ -3,7 +3,7 @@ import paypalLogo from "../photos/Paypal_2014_logo.png";
 import MasterLogo from "../photos/MasterCard_Logo.png";
 import Pyment from "../photos/Pyment.svg";
 import style from "./cssComponents/choice.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Loading from "./loading";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
@@ -17,8 +17,13 @@ function PaymentForm() {
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
+  const navigate = useNavigate();
+  
+
   const location = useLocation();
   const {
+    user_id,
     name,
     Lname,
     streetAdress,
@@ -29,9 +34,9 @@ function PaymentForm() {
     total,
   } = location.state;
 
-  
   function handleConfirm() {
     const Data = {
+      user_id :user_id,
       name: name,
       Lname: Lname,
       streetAdress: streetAdress,
@@ -54,7 +59,12 @@ function PaymentForm() {
         },
       })
       .then((response) => {
-        console.log(response.data);
+       if(response.data.success){
+        
+         navigate("/success", {replace : true ,index : -1 , state:{
+          message : response.data.message
+         }})
+       }
       });
   }
   return (
