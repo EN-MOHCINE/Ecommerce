@@ -1,5 +1,4 @@
 import axios from "axios";
-import PaymentForm from "./PaymentChoice";
 import React, { useEffect, useState } from "react";
 import styles from "./cssComponents/CheckOut.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -92,6 +91,7 @@ function CheckOut() {
   function PaymentMethod() {
     navigate("/paymentMethod", {
       state: {
+        user_id:localStorage.getItem("user_id"),
         name: Fname,
         Lname: Lname,
         streetAdress: Address,
