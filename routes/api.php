@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ConfirmOredersController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\SuppCommandeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +68,4 @@ Route::get('roles',[RolesController::class,'getRoles']);
 Route::patch('roles/{id}',[UserController::class,'updateRole']);
 Route::get('orders_user/{id}' ,[OrderController ::class ,"orders_user"]) ;
 Route::post('paymentMethod',[ConfirmOredersController::class,'confirmPaymentMethod']);
+Route::post('/detailsCommand/{id}', [SuppCommandeController::class, "SuppCommande"]);

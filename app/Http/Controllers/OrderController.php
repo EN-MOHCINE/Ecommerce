@@ -17,7 +17,8 @@ class OrderController extends Controller
         Order::create([
             'user_id' => $request->userId,
             'product_id'=>$request->productId,
-            'quantity'=>$request->quantity
+            'quantity'=>$request->quantity,
+            "cardnumber" => $request->cardnumber
         ]);
         $datalist = [
             'email' => $request->email,

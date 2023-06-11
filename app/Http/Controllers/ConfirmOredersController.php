@@ -70,12 +70,13 @@ class ConfirmOredersController extends Controller
        $command= DB::table('confirm_oreders')
         ->join('products', 'products.product_id', 'confirm_oreders.product_id')
         ->join('users', 'users.user_id', 'confirm_oreders.user_id')
-        ->select('products.quantity as productQuantity','products.product_id as productId','products.name as productName','products.picture_path','confirm_oreders.quantity as orderQuantity','users.user_id as userId','users.name as userName','users.city','users.address','users.phone','users.email')
+        ->select('products.quantity as productQuantity','products.product_id as productId','products.name as productName','products.picture_path','confirm_oreders.quantity as orderQuantity','users.user_id as userId','users.name as userName','users.city','users.address','users.phone','users.email',"cardnumber")
         ->where('confirm_oreders.id',$id)
         ->get();
         return $command;
     }
     function confirmPaymentMethod(Request $request){
+        $card_number = $request-> numberCard;
         $method = ($request->selectedOption === 'creditCard') ? $request->selectedOption : 'cashOnDelivery';
         foreach ($request->products as $product) {
             confirmOreders::create([
@@ -83,15 +84,25 @@ class ConfirmOredersController extends Controller
                 'product_id' => (int) $product['product_id'],
                 'quantity' => (int) $product['quantity'],
                 'total' => (int) $product['total'],
-                'method' => $method
+                'method' => $method,
+                'cardnumber' => (int) $card_number
             ]);
         }
+        User::where('user_id', $request->user_id)->update([
+            'address' => $request->streetAdress,
+            'code_postal' => $request->postCode,
+            'phone' => $request->phone,
+            'city' => $request->city
+        ]);
+        
+        Cart::where("user_id",$request->user_id)->delete();
+
         if ($method==='creditCard') {
             $total = 0;
             foreach ($request->products as $product) {
                 $total += (int) $product['total'];
             }
-            $card_number = $request-> numberCard;
+            
             $bankAccount = bankaccounts::where('cardNumber', $card_number)->first();
             if ($bankAccount) {
                 $balance = $bankAccount->solde;
@@ -107,18 +118,7 @@ class ConfirmOredersController extends Controller
             } else {
                 return response()->json(['message' => 'Card not found'], 404);
             }
-
-
-        }
-        User::where('user_id', $request->user_id)->update([
-            'address' => $request->streetAdress,
-            'code_postal' => $request->postCode,
-            'phone' => $request->phone,
-            'city' => $request->city
-        ]);
-        
-        Cart::where("user_id",$request->user_id)->delete();
-        
+        }  
         return  response()->json(['message' => "hahiya jaya ldar","success" => true]);;
     }
 }

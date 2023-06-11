@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./cssAdminComponents/commandsDetails.module.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Loading from "../Components/loading";
 function CommandDetails() {
+
+  const navigate = useNavigate();
   const params = useParams();
   const [selectedPicture, setSelectedPicture] = useState("");
   const [message, setMessage] = useState("");
@@ -25,6 +27,7 @@ function CommandDetails() {
     if (data.productQuantity - data.orderQuantity > 0) {
       const Data = new FormData();
       Data.append("userId", data.userId);
+      Data.append("cardnumber", data.cardnumber);
       Data.append("quantity", data.orderQuantity);
       Data.append("productId", data.productId);
       Data.append("email", data.email);
@@ -38,6 +41,7 @@ function CommandDetails() {
           setMessage(response.data);
           setLoading(false);
           
+          
         })
         .catch((error) => {
           console.log(error);
@@ -47,6 +51,31 @@ function CommandDetails() {
       console.log("the product was not confirmed");
       setLoading(true);
     }
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/adminPannel/commands")
+    }, 3000);
+  }
+
+  function handleSupp() {
+    axios
+      .post(`http://127.0.0.1:8000/api/detailsCommand/${params.id}`)
+      .then((response) => {
+        // Handle the response if needed
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // Handle the error if needed
+        console.log(error);
+      });
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/adminPannel/commands")
+      }, 3000);
+      
+      
+
   }
   return (
     <>
@@ -74,11 +103,20 @@ function CommandDetails() {
               <span id={styles.userTitle}>Commands Informations :</span>
               <div>Product Quantity : {data.productQuantity}</div>
               <div>Order quantity : {data.orderQuantity}</div>
+              <div>card number : {data.cardnumber}</div>
               <div>
-                <button id={styles.btnConfirm} onClick={handleClick}>
-                  Confirm Order
-                </button>
-              </div>
+  <button id={styles.btnConfirm} onClick={handleClick}>
+    Confirm Order
+  </button>
+  
+  <span id={styles.span}></span> 
+  
+  <button id={styles.btnSupp} onClick={handleSupp}>
+   delete order
+  </button>
+</div>
+
+              
               <div>
                 {message ? (
                   <span style={{ color: "green" }}>{message}</span>

@@ -12,6 +12,7 @@ class Order extends Model
         'user_id',
         'order_date',
         'product_id',
-        'quantity'
+        'quantity',
+        "cardnumber"
     ];
 }
