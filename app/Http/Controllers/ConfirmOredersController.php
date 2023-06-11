@@ -37,24 +37,9 @@ class ConfirmOredersController extends Controller
                 'message' => $validator->errors()->all()
             ]);
         }
-        // foreach ($request->products as $product) {
-        //     confirmOreders::create([
-        //         'user_id' => $request->user_id,
-        //         'product_id' => json_decode($product)->product_id,
-        //         'quantity' => json_decode($product)->quantity,
-        //     ]);
-        // }
-        // User::where('user_id', $request->user_id)->update([
-        //     'address' => $request->streetAdress,
-        //     'code_postal' => $request->postCode,
-        //     'phone' => $request->phone,
-        //     'city' => $request->city
-        // ]);
-
-
         return response()->json([
             'status' => 'success',
-            // 'message' => 'waiting the confirmation message'
+            
         ]);
     }
 
