@@ -55,6 +55,14 @@ function ProductDetails() {
       setVisiblityCart(true);
     }
   }
+  function handleShop(){
+    navigate('/ShopNow',{state:
+    {
+      productId:selectedSizeId,
+      quantity:quantity,
+    }
+  })
+  }
   return product.name ? (
     <>
       {selectedSizeId && visibilityCart ? (
@@ -149,7 +157,7 @@ function ProductDetails() {
               </div>
             </div>
             <div>
-              <button id={styles.btnWishlist}>add to wishlist</button>
+              <button id={styles.btnWishlist} onClick={handleShop}>shop now</button>
               <button id={styles.addCartBtn} onClick={cartToggle}>
                 add to cart
               </button>

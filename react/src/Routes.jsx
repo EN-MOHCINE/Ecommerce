@@ -21,6 +21,7 @@ import CollectionList from "./AdminComponents/collectionList";
 import CategoryList from "./AdminComponents/CategoryList";
 import SizeList from "./AdminComponents/SizeList";
 import PaymentChoice from './Components/PaymentChoice'
+import ShopNow from "./Components/ShopNow";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -66,6 +67,9 @@ const Routes = createBrowserRouter([
       },{
         path: "/paymentMethod",
         element: <PaymentChoice />,
+      },{
+        path: "/ShopNow",
+        element: <ShopNow />,
       },
 
       localStorage.getItem("user_role") === "2"
