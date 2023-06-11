@@ -21,6 +21,8 @@ import CollectionList from "./AdminComponents/collectionList";
 import CategoryList from "./AdminComponents/CategoryList";
 import SizeList from "./AdminComponents/SizeList";
 import  Infos_user from './Components/InfosUser'
+import PaymentChoice from "./Components/paymentChoice"
+import AfterPaiment from "./Components/afterPaiment";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -63,12 +65,22 @@ const Routes = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckOut />,
+      },{
+        path: "/paymentMethod",
+        element: <PaymentChoice />,
       },
+      {
+        path: "/success",
+        element: <AfterPaiment />,
+      },
+<<<<<<< HEAD
       {
         path: "/infos_client/:id",
         element: <Infos_user />,
       } ,
 
+=======
+>>>>>>> 03dce5d1b4a5731b3cfa56a34e3db35483cb3f40
       localStorage.getItem("user_role") === "2"
         ? {
             path: "/adminPannel",

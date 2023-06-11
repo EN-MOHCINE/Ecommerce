@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class confirmOreders extends Model
+class bankaccounts extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'user_id',
-        'product_id',
-        'quantity',
-        'confirmed',
-        "method",
-        "total"
+        'cardNumber',
+        'expDate',
+        'cvv',
+        'solde',
     ];
 }

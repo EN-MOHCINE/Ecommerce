@@ -6,11 +6,14 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use App\Mail\emailCheckout;
+use App\Models\bankaccounts;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\confirmOreders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Psy\Readline\Hoa\Console;
 
 class ConfirmOredersController extends Controller
 {
@@ -34,24 +37,24 @@ class ConfirmOredersController extends Controller
                 'message' => $validator->errors()->all()
             ]);
         }
-        foreach ($request->products as $product) {
-            confirmOreders::create([
-                'user_id' => $request->user_id,
-                'product_id' => json_decode($product)->product_id,
-                'quantity' => json_decode($product)->quantity,
-            ]);
-        }
-        User::where('user_id', $request->user_id)->update([
-            'address' => $request->streetAdress,
-            'code_postal' => $request->postCode,
-            'phone' => $request->phone,
-            'city' => $request->city
-        ]);
+        // foreach ($request->products as $product) {
+        //     confirmOreders::create([
+        //         'user_id' => $request->user_id,
+        //         'product_id' => json_decode($product)->product_id,
+        //         'quantity' => json_decode($product)->quantity,
+        //     ]);
+        // }
+        // User::where('user_id', $request->user_id)->update([
+        //     'address' => $request->streetAdress,
+        //     'code_postal' => $request->postCode,
+        //     'phone' => $request->phone,
+        //     'city' => $request->city
+        // ]);
         
 
         return response()->json([
             'status' => 'success',
-            'message' => 'waiting the confirmation message'
+            // 'message' => 'waiting the confirmation message'
         ]);
     }
 
@@ -71,5 +74,51 @@ class ConfirmOredersController extends Controller
         ->where('confirm_oreders.id',$id)
         ->get();
         return $command;
+    }
+    function confirmPaymentMethod(Request $request){
+        $method = ($request->selectedOption === 'creditCard') ? $request->selectedOption : 'cashOnDelivery';
+        foreach ($request->products as $product) {
+            confirmOreders::create([
+                'user_id' => $request->user_id,
+                'product_id' => (int) $product['product_id'],
+                'quantity' => (int) $product['quantity'],
+                'total' => (int) $product['total'],
+                'method' => $method
+            ]);
+        }
+        if ($method==='creditCard') {
+            $total = 0;
+            foreach ($request->products as $product) {
+                $total += (int) $product['total'];
+            }
+            $card_number = $request-> numberCard;
+            $bankAccount = bankaccounts::where('cardNumber', $card_number)->first();
+            if ($bankAccount) {
+                $balance = $bankAccount->solde;
+                
+                if ($balance >= $total) {
+                    $newBalance = $balance - $total;
+                    $bankAccount->solde = $newBalance;
+                    $bankAccount->save();
+                    return response()->json(['message' => "the paiment is through wait for the confirmation from admin","success" => true]);
+                } else {
+                    return response()->json(['message' => 'Insufficient funds'], 400);
+                }
+            } else {
+                return response()->json(['message' => 'Card not found'], 404);
+            }
+
+
+        }
+        User::where('user_id', $request->user_id)->update([
+            'address' => $request->streetAdress,
+            'code_postal' => $request->postCode,
+            'phone' => $request->phone,
+            'city' => $request->city
+        ]);
+        
+        Cart::where("user_id",$request->user_id)->delete();
+        
+        return  response()->json(['message' => "hahiya jaya ldar","success" => true]);;
     }
 }

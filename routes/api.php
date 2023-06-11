@@ -67,4 +67,4 @@ Route::get('roles',[RolesController::class,'getRoles']);
 Route::patch('roles/{id}',[UserController::class,'updateRole']);
 Route::get('orders_user/{id}' ,[OrderController ::class ,"orders_user"]) ;
 Route::get('OrderUser/{Role?}/{id}' ,[OrderController ::class ,"OrderUser_espace_client"]) ;
-
+Route::post('paymentMethod',[ConfirmOredersController::class,'confirmPaymentMethod']);

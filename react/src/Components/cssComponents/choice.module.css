@@ -1,4 +1,7 @@
-#master{
+#spaceUp{
+    height: 150px;
+    width: 100%;
+}#master{
     height: 30px;
     border:1px solid rgb(255, 98, 7)  ;
     outline:none ;
@@ -11,4 +14,47 @@
     outline:none ;
     margin: 10px 0;
     width: 100%;
+}
+#container{
+    width: 50%;
+    margin:0 auto ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Raleway';
+}
+#container>div{
+    width:100%;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}#container>div>span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#title{
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+#or{
+    width: 50%;
+    margin:0 auto ;
+    display: flex;
+    align-items: center;
+    font-family: 'Raleway';
+}
+hr{
+    margin: 9px;
+    width: 300px;
+}#placeOrderBtn{
+    background-color: black;
+    padding: 15px 5px ;
+    width: 70%;
+    margin: 40px auto;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
