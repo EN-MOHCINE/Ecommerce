@@ -87,12 +87,18 @@ function Header() {
       setVisiblityCart(true);
     }
   }
-  function handleLogout() {
+  function handleLogout() { 
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_id");
     localStorage.removeItem("user_role");
     navigate("/");
   }
+
+  // function handleCommande(){
+  //   console.log( localStorage.getItem("user_id"))
+  // } 
+
+
   function callIT() {
     SearchClick();
     focusInput();
@@ -368,8 +374,10 @@ function Header() {
                     ) : (
                       ""
                     )}
-                    <Link>
-                      <li onClick={handleLogout}>commands</li>
+                    <Link to={"/infos_client/"+localStorage.getItem("user_id")} >
+                      {/* <li onClick={handleCommande}>commands</li> */}
+                      <li >commands</li>
+
                     </Link>
                     <a>
                       <li onClick={handleLogout}>logout</li>

@@ -20,7 +20,7 @@ import UpdateProduct from "./AdminComponents/UpdateProduct";
 import CollectionList from "./AdminComponents/collectionList";
 import CategoryList from "./AdminComponents/CategoryList";
 import SizeList from "./AdminComponents/SizeList";
-
+import  Infos_user from './Components/InfosUser'
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +64,10 @@ const Routes = createBrowserRouter([
         path: "/checkout",
         element: <CheckOut />,
       },
+      {
+        path: "/infos_client/:id",
+        element: <Infos_user />,
+      } ,
 
       localStorage.getItem("user_role") === "2"
         ? {

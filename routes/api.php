@@ -66,4 +66,5 @@ Route::patch('size/{id}',[SizesController::class,'updateSizes']);
 Route::get('roles',[RolesController::class,'getRoles']);
 Route::patch('roles/{id}',[UserController::class,'updateRole']);
 Route::get('orders_user/{id}' ,[OrderController ::class ,"orders_user"]) ;
+Route::get('OrderUser/{Role?}/{id}' ,[OrderController ::class ,"OrderUser_espace_client"]) ;
 
