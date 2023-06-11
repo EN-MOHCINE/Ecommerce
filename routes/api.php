@@ -68,4 +68,10 @@ Route::get('roles',[RolesController::class,'getRoles']);
 Route::patch('roles/{id}',[UserController::class,'updateRole']);
 Route::get('orders_user/{id}' ,[OrderController ::class ,"orders_user"]) ;
 Route::post('paymentMethod',[ConfirmOredersController::class,'confirmPaymentMethod']);
+<<<<<<< HEAD
 Route::post('/detailsCommand/{id}', [SuppCommandeController::class, "SuppCommande"]);
+=======
+Route::get('shopNow/{productId}',[ProductController::class,'shopNow']);
+Route::get('OrderUser/{Role?}/{id}' ,[OrderController ::class ,"OrderUser_espace_client"]) ;
+Route::post('paymentMethod',[ConfirmOredersController::class,'confirmPaymentMethod']);
+>>>>>>> 0870e1af2b35ae7bd4581b2962929f935d112375

@@ -288,5 +288,8 @@ class ProductController extends Controller
 
         return response()->json(['message' => 'Product updated successfully'], 200);
     }
-    
+    function shopNow($productId=null){
+        $product=Product::where('product_id',$productId)->first();
+        return $product;
+    }
 }
