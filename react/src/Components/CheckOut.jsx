@@ -27,19 +27,10 @@ function CheckOut() {
   const [expDate, setExpDate] = useState("");
   const [cvv, setCvv] = useState("");
   const location = useLocation()
-  const {productId,quantity,shopNow}=location.state
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
   useEffect(() => {
-    if (shopNow) {
-      axios.get(`http://127.0.0.1:8000/api/ShopNow/${productId}`)
-      .then(response=>{
-        setProducts(response.data)
-      }).catch((error) => {
-        console.log(error);
-      });
-    }else{
     axios
       .get(`http://127.0.0.1:8000/api/Cart/${localStorage.getItem("user_id")}`)
       .then((response) => {
@@ -48,7 +39,7 @@ function CheckOut() {
       .catch((error) => {
         console.log(error);
       });
-  }}, []);;
+  }, []);
   const handleOrder = async () => {
     setLoading(true);
     const Data = new FormData();

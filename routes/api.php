@@ -69,4 +69,3 @@ Route::get('orders_user/{id}' ,[OrderController ::class ,"orders_user"]) ;
 Route::post('paymentMethod',[ConfirmOredersController::class,'confirmPaymentMethod']);
 Route::get('shopNow/{productId}',[ProductController::class,'shopNow']);
 Route::get('OrderUser/{Role?}/{id}' ,[OrderController ::class ,"OrderUser_espace_client"]) ;
-Route::post('paymentMethod',[ConfirmOredersController::class,'confirmPaymentMethod']);

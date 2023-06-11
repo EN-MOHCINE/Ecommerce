@@ -78,19 +78,14 @@ function ShopNow() {
       });
   };
   let filename = "";
-
 if (typeof product.picture_path === "string") {
   const parsedData = JSON.parse(product.picture_path.replace(/'/g, ""));
   filename = parsedData[0];
 }
-
-console.log(filename);
-
-// Output: 16835402355be5f8113548359.602a7c6cd4919.jpg
-
   function PaymentMethod() {
     navigate("/paymentMethod", {
       state: {
+        user_id:localStorage.getItem('user_id'),
         name: Fname,
         Lname: Lname,
         streetAdress: Address,

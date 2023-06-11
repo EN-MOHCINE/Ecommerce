@@ -17,10 +17,7 @@ function PaymentForm() {
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-
   const navigate = useNavigate();
-  
-
   const location = useLocation();
   const {
     user_id,
@@ -60,7 +57,6 @@ function PaymentForm() {
       })
       .then((response) => {
        if(response.data.success){
-        
          navigate("/success", {replace : true ,index : -1 , state:{
           message : response.data.message
          }})
