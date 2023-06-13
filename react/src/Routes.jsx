@@ -20,9 +20,10 @@ import UpdateProduct from "./AdminComponents/UpdateProduct";
 import CollectionList from "./AdminComponents/collectionList";
 import CategoryList from "./AdminComponents/CategoryList";
 import SizeList from "./AdminComponents/SizeList";
-import  Infos_user from './Components/InfosUser'
-import PaymentChoice from "./Components/paymentChoice"
+import Infos_user from './Components/InfosUser';
 import AfterPaiment from "./Components/afterPaiment";
+import ShopNow from "./Components/ShopNow";
+import PaymentForm from "./Components/PaymentChoice";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -67,7 +68,10 @@ const Routes = createBrowserRouter([
         element: <CheckOut />,
       },{
         path: "/paymentMethod",
-        element: <PaymentChoice />,
+        element: <PaymentForm/>,
+      },{
+        path: "/ShopNow",
+        element: <ShopNow />,
       },
       {
         path: "/success",

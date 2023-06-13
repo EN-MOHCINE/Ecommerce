@@ -1,4 +1,5 @@
 import axios from "axios";
+import PaymentForm from "./PaymentChoice";
 import React, { useEffect, useState } from "react";
 import styles from "./cssComponents/CheckOut.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -8,8 +9,8 @@ import paypalLogo from "../photos/Paypal_2014_logo.png";
 import MasterLogo from "../photos/MasterCard_Logo.png";
 import style from "./cssComponents/choice.module.css";
 import "react-toastify/dist/ReactToastify.css";
-function CheckOut() {
-  const [products, setProducts] = useState([]);
+function ShopNow() {
+  const [product, setProduct] = useState([]);
   const [Fname, setFname] = useState("");
   const [Lname, setLname] = useState("");
   const [Address, setAddress] = useState("");
@@ -27,19 +28,18 @@ function CheckOut() {
   const [expDate, setExpDate] = useState("");
   const [cvv, setCvv] = useState("");
   const location = useLocation()
+  const {productId,quantity}=location.state
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
   useEffect(() => {
-    axios
-      .get(`http://127.0.0.1:8000/api/Cart/${localStorage.getItem("user_id")}`)
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => {
+      axios.get(`http://127.0.0.1:8000/api/shopNow/${productId}`)
+      .then(response=>{
+        setProduct(response.data)
+      }).catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, []);;
   const handleOrder = async () => {
     setLoading(true);
     const Data = new FormData();
@@ -51,9 +51,7 @@ function CheckOut() {
     Data.append("phone", Phone);
     Data.append("email", Email);
     Data.append("user_id", localStorage.getItem("user_id"));
-    products.forEach((product) => {
-      Data.append(`products[]`, JSON.stringify(product));
-    });
+    Data.append(`products[]`, JSON.stringify(product));
     await axios
       .post("http://127.0.0.1:8000/api/CheckOut", Data, {
         headers: {
@@ -79,10 +77,15 @@ function CheckOut() {
         }
       });
   };
+  let filename = "";
+if (typeof product.picture_path === "string") {
+  const parsedData = JSON.parse(product.picture_path.replace(/'/g, ""));
+  filename = parsedData[0];
+}
   function PaymentMethod() {
     navigate("/paymentMethod", {
       state: {
-        user_id:localStorage.getItem("user_id"),
+        user_id:localStorage.getItem('user_id'),
         name: Fname,
         Lname: Lname,
         streetAdress: Address,
@@ -90,14 +93,15 @@ function CheckOut() {
         city: City,
         phone: Phone,
         email: Email,
-        shopNow:false,
-        total: products.map((product) => ({
+        shopNow:true,
+        total: {
           product_id: product.product_id,
-          quantity:product.quantity,
+          quantity:quantity,
           total:
             (product.price - product.price * (product.promotion / 100)) *
-            product.quantity,
-        })),
+            quantity,
+        }
+        
       },
     });
   }
@@ -207,46 +211,36 @@ function CheckOut() {
                 <span id={styles.titleCart}>Order summary {status}</span>
               </div>
               <div id={styles.productSection}>
-                {products !== undefined
-                  ? products.map((product) => (
-                      <div className={styles.productInfo} key={product.cart_id}>
+                      <div className={styles.productInfo} key={product.product_id}>
                         <span className={styles.infoDiv}>
                           <img
                             src={
-                              "http://127.0.0.1:8000/pictures/" +
-                              JSON.parse(product.picture)[0]
+                                "http://127.0.0.1:8000/pictures/"+
+                                filename
+                              
                             }
                             className={styles.img}
                           />
                           {product.name}
                           <span className={styles.quantity}>
-                            x{product.quantity}
+                            x{quantity}
                           </span>
                         </span>
                         <span>
                           {product.price -
-                            product.price * (product.promotion / 100)}{" "}
+                            product.price * (product.promotion / 100)}
                           DH
                         </span>
                       </div>
-                    ))
-                  : ""}
               </div>
               <div>
                 <div id={styles.calculateDiv}>
                   <div>
                     <span>subtotal</span>
                     <span>
-                      {products
-                        ? products.reduce(
-                            (total, product) =>
-                              total +
-                              (product.price -
-                                product.price * (product.promotion / 100)) *
-                                product.quantity,
-                            0
-                          )
-                        : 0}
+                        {product.price -
+                        product.price * (product.promotion / 100) *
+                        quantity}
                       DH
                     </span>
                   </div>
@@ -260,16 +254,9 @@ function CheckOut() {
                 >
                   <span>total</span>
                   <span>
-                    {products
-                      ? products.reduce(
-                          (total, product) =>
-                            total +
-                            (product.price -
-                              product.price * (product.promotion / 100)) *
-                              product.quantity,
-                          0
-                        )
-                      : 0}
+                  {product.price -
+                        product.price * (product.promotion / 100) *
+                        quantity}
                     DH
                   </span>
                 </div>
@@ -285,4 +272,4 @@ function CheckOut() {
   );
 }
 
-export default CheckOut;
+export default ShopNow;

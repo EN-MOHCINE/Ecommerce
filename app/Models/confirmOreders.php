@@ -14,6 +14,7 @@ class confirmOreders extends Model
         'quantity',
         'confirmed',
         "method",
-        "total"
+        "total",
+        "cardnumber"
     ];
 }
