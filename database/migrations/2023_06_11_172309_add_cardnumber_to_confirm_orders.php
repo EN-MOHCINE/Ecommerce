@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('cardnumber')->nullable();
         });
     }
-
     /**
      * Reverse the migrations.
      */

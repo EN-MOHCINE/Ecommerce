@@ -28,6 +28,7 @@ function PaymentForm() {
     city,
     phone,
     email,
+    shopNow,
     total,
   } = location.state;
 
@@ -41,7 +42,9 @@ function PaymentForm() {
       city: city,
       phone: phone,
       email: email,
+      shopNow:shopNow,
       products: total,
+      
     };
     if (selectedOption === "creditCard") {
       Data.expDate = expDate;
@@ -56,6 +59,7 @@ function PaymentForm() {
         },
       })
       .then((response) => {
+        console.log(response.data)
        if(response.data.success){
          navigate("/success", {replace : true ,index : -1 , state:{
           message : response.data.message

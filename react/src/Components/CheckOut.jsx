@@ -90,6 +90,7 @@ function CheckOut() {
         city: City,
         phone: Phone,
         email: Email,
+        shopNow:false,
         total: products.map((product) => ({
           product_id: product.product_id,
           quantity:product.quantity,

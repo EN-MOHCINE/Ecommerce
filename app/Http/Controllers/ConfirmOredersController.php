@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
 use App\Mail\emailCheckout;
 use App\Models\bankaccounts;
-use App\Models\Cart;
 use Illuminate\Http\Request;
+use Psy\Readline\Hoa\Console;
 use App\Models\confirmOreders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Psy\Readline\Hoa\Console;
 
 class ConfirmOredersController extends Controller
 {
@@ -61,9 +61,10 @@ class ConfirmOredersController extends Controller
         return $command;
     }
     function confirmPaymentMethod(Request $request)
-    {   $card_number = $request->numberCard;
+    {   
+        $card_number = $request->numberCard;
         $method = ($request->selectedOption === 'creditCard') ? $request->selectedOption : 'cashOnDelivery';
-        if ($request->products['product_id']) {
+        if ($request->shopNow==='true') {
             confirmOreders::create([
                 'user_id' => $request->user_id,
                 'product_id' => (int) $request->products['product_id'],
@@ -92,7 +93,7 @@ class ConfirmOredersController extends Controller
             Cart::where("user_id", $request->user_id)->delete();
             if ($method === 'creditCard') {
                 $total = 0;
-                if ($request->products['product_id']) {
+                if ($request->shopNow==='true') {
                     $total += (int) $request->products['total'];
                 } else {
                 foreach ($request->products as $product) {
@@ -117,6 +118,6 @@ class ConfirmOredersController extends Controller
             }
            
             return  response()->json(['message' => "hahiya jaya ldar", "success" => true]);
-        
+
     }
 }

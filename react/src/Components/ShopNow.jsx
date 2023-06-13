@@ -93,6 +93,7 @@ if (typeof product.picture_path === "string") {
         city: City,
         phone: Phone,
         email: Email,
+        shopNow:true,
         total: {
           product_id: product.product_id,
           quantity:quantity,
