@@ -82,19 +82,21 @@ export default function Infos_user() {
                     </p>
                   </div>
                   {data.hasOwnProperty('order_id') ? (
-                    <p disabled className={styles.orange}>
-                      En cours
-                    </p>
-                  ) : (
                     <p disabled className={styles.button}>
                       Confirmer
+                    </p>
+                  ) : (
+                    <p disabled className={styles.orange}>
+                      En cours
                     </p>
                   )}
                 </div>
               ))}
             </div>
           ) : (
-            ''
+            <div id={styles.aucun}>
+              Aucune Order
+            </div>
           )}
         </div>
       </div>

@@ -73,14 +73,11 @@ const Routes = createBrowserRouter([
         path: "/success",
         element: <AfterPaiment />,
       },
-<<<<<<< HEAD
       {
         path: "/infos_client/:id",
         element: <Infos_user />,
       } ,
 
-=======
->>>>>>> 03dce5d1b4a5731b3cfa56a34e3db35483cb3f40
       localStorage.getItem("user_role") === "2"
         ? {
             path: "/adminPannel",
