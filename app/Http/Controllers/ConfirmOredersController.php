@@ -65,7 +65,10 @@ class ConfirmOredersController extends Controller
         $command = DB::table('confirm_oreders')
             ->join('products', 'products.product_id', 'confirm_oreders.product_id')
             ->join('users', 'users.user_id', 'confirm_oreders.user_id')
-            ->select('products.quantity as productQuantity', 'products.product_id as productId', 'products.name as productName', 'products.picture_path', 'confirm_oreders.quantity as orderQuantity', 'users.user_id as userId', 'users.name as userName', 'users.city', 'users.address', 'users.phone', 'users.email','cardnumber')
+            ->select('confirm_oreders.id as confOrder','products.price as productPrice','products.promotion as promotion','products.quantity as productQuantity',
+            'products.product_id as productId', 'products.name as productName', 'products.picture_path',
+            'confirm_oreders.quantity as orderQuantity', 'users.user_id as userId', 'users.name as userName',
+            'users.city', 'users.address', 'users.phone', 'users.email','cardnumber')
             ->where('confirm_oreders.id', $id)
             ->get();
         return $command;

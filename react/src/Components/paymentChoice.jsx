@@ -44,7 +44,6 @@ function PaymentForm() {
       email: email,
       shopNow:shopNow,
       products: total,
-      
     };
     if (selectedOption === "creditCard") {
       Data.expDate = expDate;
@@ -69,21 +68,7 @@ function PaymentForm() {
   }
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <ToastContainer />
       <div id={style.spaceUp}></div>
-
       <div id={style.container}>
         <span id={style.title}>Payment Method</span>
         <div>
