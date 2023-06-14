@@ -73,6 +73,7 @@ class OrderController extends Controller
                 ->select('confirm_oreders.*', 'products.*')
                 ->where('confirm_oreders.user_id', $id)
                 ->get();
+                
             $results = $results->toArray();
             $result1 = $result1->toArray();
             $resulttotal = array_merge($results, $result1);
