@@ -10,6 +10,11 @@ function AdminLayout() {
       <div id={styles.dashboardContainer}>
         <div id={styles.navLayout}>
           <ul>
+          <li>
+              <Link to="/adminPannel/dashboard">
+                <span>Dashboard</span>
+              </Link>
+            </li>
             <li>
               <Link to="/adminPannel/products">
                 <span>Products list</span>

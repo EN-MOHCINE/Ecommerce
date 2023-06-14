@@ -84,7 +84,7 @@ function Index() {
                         Jackets
                     </h2>
                     <Link
-                      to="/products/categories/categories/2"
+                      to="/products/categories/categories/10"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -105,7 +105,7 @@ function Index() {
                     Sweatshirt
                     </h2>
                     <Link
-                      to="/products/categories/categories/1"
+                      to="/products/categories/categories/8"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -126,7 +126,7 @@ function Index() {
                         Pants
                     </h2>
                     <Link
-                      to="/products/categories/categories/7"
+                      to="/products/categories/categories/11"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -147,7 +147,7 @@ function Index() {
                       Hoodies
                     </h2>
                     <Link
-                      to="/products/categories/categories/5"
+                      to="/products/categories/categories/7"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -168,7 +168,7 @@ function Index() {
                         Tanks   Tops
                     </h2>
                     <Link
-                      to="/products/categories/categories/3"
+                      to="/products/categories/categories/9"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>

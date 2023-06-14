@@ -25,6 +25,7 @@ import AfterPaiment from "./Components/afterPaiment";
 import ShopNow from "./Components/ShopNow";
 import PaymentForm from "./Components/PaymentChoice";
 import AddProductSize from "./AdminComponents/AddProductSize";
+import Dashboard from "./AdminComponents/Dashboard";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -122,6 +123,9 @@ const Routes = createBrowserRouter([
                 },{
                   path:'/adminPannel/commands',
                   element:<Commands/>
+                },{
+                  path:'/adminPannel/dashboard',
+                  element:<Dashboard/>
                 },
                 {
                   path:'/adminPannel/detailsCommand/:id',

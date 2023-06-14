@@ -48,7 +48,14 @@ class ProductController extends Controller
         $product->size_id = $request->input('size_id');
         $product->Collection_id = $request->input('collection_id');
         $product->promotion = $request->input('promotion');
-        $product->tags = $request->input('tags');
+        $tags = $request->input('tags');
+        $lowercaseTags = [];
+        foreach ($tags as $tag) {
+            $lowercaseTags[] = [
+                'tag' => strtolower($tag['tag']),
+            ];
+        }
+        $product->tags = $lowercaseTags;
         if ($request->hasFile('productPictures')) {
             $productPictures = $request->file('productPictures');
             $images = [];
@@ -64,6 +71,7 @@ class ProductController extends Controller
 
         $product->save();
         return response()->json(['message' => 'Product created successfully'], 200);
+        dd($request->input('tags'));
     }
     function addProductSize(Request $request)
     {
@@ -75,7 +83,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'size_id' => 'required',
             'collection_id' => 'required',
-            'promotion'=>'required'
+            'promotion' => 'required'
         ], [
             'name.required' => 'Please enter a product name.',
             'price.required' => 'Please enter a price',
@@ -98,7 +106,14 @@ class ProductController extends Controller
         $product->size_id = $request->input('size_id');
         $product->Collection_id = $request->input('collection_id');
         $product->promotion = $request->input('promotion');
-        $product->tags = $request->input('tags');
+        $tags = $request->input('tags');
+        $lowercaseTags = [];
+        foreach ($tags as $tag) {
+            $lowercaseTags[] = [
+                'tag' => strtolower($tag['tag']),
+            ];
+        }
+        $product->tags = $lowercaseTags;
         $productPicture = DB::table('products')->select('picture_path')->where('product_id', $request->id)->first();
         $sourcePicturePaths = json_decode($productPicture->picture_path, true); // Assuming picture_path is a JSON-encoded array of image paths
         $images = [];
@@ -120,9 +135,8 @@ class ProductController extends Controller
         //     $images[] = $imageName;
         // }
         // $product->picture_path = json_encode($images);
-         $product->save();
+        $product->save();
         return response()->json(['message' => 'Product created successfully'], 200);
-        
     }
     function Product($id = null, $size = null, $price = null, $stock = null)
     {
@@ -213,7 +227,7 @@ class ProductController extends Controller
             ->join('sizes', 'sizes.size_id', '=', 'products.size_id')
             ->select('name', DB::raw('MIN(picture_path) as picture'), 'price', DB::raw('MAX(promotion) as promotion'), 'name_Category', DB::raw('MIN(products.created_at) as created_at'), DB::raw('MIN(products.product_id) as product_id'))
             ->groupBy('name', 'price', 'name_Category')
-            ->whereJsonContains('tags', ['tag' => $key])
+            ->whereJsonContains('tags', ['tag' => strtolower($key)])
             ->orderBy('created_at', 'desc');
         if ($price !== 'all' && $price !== null) {
             list($minVal, $maxVal) = explode('-', $price);

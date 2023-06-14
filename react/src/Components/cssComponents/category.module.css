@@ -79,9 +79,9 @@
 
 .product {
     position: relative;
-    width: 252px;
+    width: 200px;
     margin: 20px auto;
-    height: 535px;
+    height: 400px;
     cursor: pointer;
 }.priceAfterPromo{
     text-decoration-line: line-through;
