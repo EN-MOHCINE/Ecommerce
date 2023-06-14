@@ -43,13 +43,23 @@ class ConfirmOredersController extends Controller
         ]);
     }
 
-    function commands()
-    {
-        $orders = ConfirmOreders::join('products', 'products.product_id', '=', 'confirm_oreders.product_id')
-            ->select('confirm_oreders.id', 'products.name', 'confirm_oreders.quantity', 'confirm_oreders.created_at')
-            ->paginate(10);
-        return $orders;
+    public function commands(Request $request)
+{
+    $order = $request->input('order', 'desc'); 
+
+    $query = ConfirmOreders::join('products', 'products.product_id', '=', 'confirm_oreders.product_id')
+        ->select('confirm_oreders.id', 'products.name', 'confirm_oreders.quantity', 'confirm_oreders.created_at');
+
+    if ($order === 'asc') {
+        $query->orderBy('confirm_oreders.created_at', 'asc');
+    } else {
+        $query->orderBy('confirm_oreders.created_at', 'desc');
     }
+
+    $orders = $query->paginate(10);
+
+    return $orders;
+}
     function detailsCommand($id = null)
     {
         $command = DB::table('confirm_oreders')

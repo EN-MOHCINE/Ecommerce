@@ -14,7 +14,7 @@ import abaya from "../photos/abaya.jpg";
 // import card1 from  "../photos/card1.png"; 
 
 
-import card1 from  "../photos/card_1.png";
+import card1 from  "../photos/card_1.jpg";
 import card2 from  "../photos/card_2.png";
 import card3 from  "../photos/card_3.png";
 import card4 from  "../photos/card_4.png";
@@ -81,10 +81,10 @@ function Index() {
                   <img className={styles2.img2} src={card3} alt="" />
                   <div className={styles2.pp11}>
                     <h2 className={styles2.pp2}>
-                      Card Heading 1
+                        Jackets
                     </h2>
                     <Link
-                      to="/products/categories/categories/all"
+                      to="/products/categories/categories/2"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -102,10 +102,10 @@ function Index() {
                   <img className={styles2.img2} src={card5} alt="" />
                   <div className={styles2.pp1}>
                     <h2 className={styles2.pp2}>
-                      Card Heading 1
+                    Sweatshirt
                     </h2>
                     <Link
-                      to="/products/categories/categories/all"
+                      to="/products/categories/categories/1"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -123,10 +123,10 @@ function Index() {
                   <img className={styles2.img2} src={card1} alt="" />
                   <div className={styles2.pp1}>
                     <h2 className={styles2.pp2}>
-                      Card Heading 1
+                        Pants
                     </h2>
                     <Link
-                      to="/products/categories/categories/all"
+                      to="/products/categories/categories/7"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -144,10 +144,10 @@ function Index() {
                   <img className={styles2.img2} src={card4} alt="" />
                   <div className={styles2.pp1}>
                     <h2 className={styles2.pp2}>
-                      Card Heading 1
+                      Hoodies
                     </h2>
                     <Link
-                      to="/products/categories/categories/all"
+                      to="/products/categories/categories/5"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
@@ -165,10 +165,10 @@ function Index() {
                   <img className={styles2.img2} src={card2} alt="" />
                   <div className={styles2.pp11}>
                     <h2 className={styles2.pp2}>
-                      Card Heading 1
+                        Tanks   Tops
                     </h2>
                     <Link
-                      to="/products/categories/categories/all"
+                      to="/products/categories/categories/3"
                       id={styles.discoverLink}
                     >
                       <button className={styles2.button1} > <span >Start shopping</span></button>
