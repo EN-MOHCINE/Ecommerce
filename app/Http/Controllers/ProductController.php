@@ -22,7 +22,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'size_id' => 'required',
             'collection_id' => 'required',
-            'promotion'=>'required'
+            'promotion' => 'required'
         ], [
             'name.required' => 'Please enter a product name.',
             'price.required' => 'Please enter a price',
@@ -44,9 +44,9 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->quantity = $request->input('quantity');
-        $product->category_id = $request->input('category_id');
+        $product->Category_id = $request->input('category_id');
         $product->size_id = $request->input('size_id');
-        $product->collection_id = $request->input('collection_id');
+        $product->Collection_id = $request->input('collection_id');
         $product->promotion = $request->input('promotion');
         $product->tags = $request->input('tags');
         if ($request->hasFile('productPictures')) {
@@ -65,7 +65,65 @@ class ProductController extends Controller
         $product->save();
         return response()->json(['message' => 'Product created successfully'], 200);
     }
-
+    function addProductSize(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'quantity' => 'required|integer',
+            'description' => 'required',
+            'category_id' => 'required',
+            'size_id' => 'required',
+            'collection_id' => 'required',
+            'promotion'=>'required'
+        ], [
+            'name.required' => 'Please enter a product name.',
+            'price.required' => 'Please enter a price',
+            'quantity.required' => 'Please enter a quantity',
+            'quantity.integer' => 'Please enter a quantity integer',
+            'description.required' => 'Please enter the description for product',
+            'category_id.required' => 'Please enter the category for product ',
+            'size_id.required' => 'Please enter the size for product ',
+            'collection_id.required' => 'Please enter the collection for product ',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        $product = new Product;
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        $product->quantity = $request->input('quantity');
+        $product->Category_id = $request->input('category_id');
+        $product->size_id = $request->input('size_id');
+        $product->Collection_id = $request->input('collection_id');
+        $product->promotion = $request->input('promotion');
+        $product->tags = $request->input('tags');
+        $productPicture = DB::table('products')->select('picture_path')->where('product_id', $request->id)->first();
+        $sourcePicturePaths = json_decode($productPicture->picture_path, true); // Assuming picture_path is a JSON-encoded array of image paths
+        $images = [];
+        foreach ($sourcePicturePaths as $picturePath) {
+            // Copy the picture file from the source product to the destination product
+            $sourceImagePath = public_path('pictures/' . $picturePath);
+            $destinationImagePath = time() . $picturePath; // Generate a unique image name
+            copy($sourceImagePath, public_path('pictures/' . $destinationImagePath));
+            $images[] = $destinationImagePath;
+        }
+        // Save the image paths in the destination product
+        $product->picture_path = json_encode($images);
+        $product->save();
+        // $productPictures = $request->file('productPictures');
+        // $images = [];
+        // foreach ($productPictures as $picture) {
+        //     $imageName = time() . $picture->getClientOriginalName();
+        //     $picture->move(public_path('pictures'), $imageName);
+        //     $images[] = $imageName;
+        // }
+        // $product->picture_path = json_encode($images);
+         $product->save();
+        return response()->json(['message' => 'Product created successfully'], 200);
+        
+    }
     function Product($id = null, $size = null, $price = null, $stock = null)
     {
         $result = array();
@@ -114,7 +172,7 @@ class ProductController extends Controller
                 'price' => $product->price,
                 'category' => $product->name_Category,
                 'sizes' => $sizes,
-                'promotion'=>$product->promotion,
+                'promotion' => $product->promotion,
                 'all' => $products->lastPage()
             );
         }
@@ -130,7 +188,7 @@ class ProductController extends Controller
             ->get();
 
         $productDetails = DB::table('products')
-            ->select('name', 'picture_path as pictures', 'quantity', 'promotion','description', 'price')
+            ->select('name', 'picture_path as pictures', 'quantity', 'promotion', 'description', 'price')
             ->where('name', $productName[0]->name)
             ->groupBy('name', 'picture_path', 'quantity', 'description', 'price', 'promotion')
             ->get();
@@ -191,7 +249,7 @@ class ProductController extends Controller
                 'picture' => $product->picture,
                 'price' => $product->price,
                 'category' => $product->name_Category,
-                'promotion'=>$product->promotion,
+                'promotion' => $product->promotion,
                 'sizes' => $sizes,
                 'all' => $products->lastPage()
             );
@@ -199,7 +257,7 @@ class ProductController extends Controller
 
         return response()->json($result);
     }
-    function allProducts($size = null, $price = null, $stock = null, $categorySelect=null,$collectionSelect=null)
+    function allProducts($size = null, $price = null, $stock = null, $categorySelect = null, $collectionSelect = null)
     {
         $allproducts = DB::table('products')
             ->join('sizes', 'sizes.size_id', '=', 'products.size_id')
@@ -220,10 +278,10 @@ class ProductController extends Controller
                 $allproducts->where('products.quantity', 0);
             }
         }
-        if($collectionSelect!=='all'&& $collectionSelect!== null){
+        if ($collectionSelect !== 'all' && $collectionSelect !== null) {
             $allproducts->where('collections.collection_id', (int) $collectionSelect);
         }
-        if($categorySelect!=='all'&& $categorySelect!== null){
+        if ($categorySelect !== 'all' && $categorySelect !== null) {
             $allproducts->where('categories.category_id', (int) $categorySelect);
         }
         $allproducts = $allproducts->paginate(9);
@@ -288,8 +346,9 @@ class ProductController extends Controller
 
         return response()->json(['message' => 'Product updated successfully'], 200);
     }
-    function shopNow($productId=null){
-        $product=Product::where('product_id',$productId)->first();
+    function shopNow($productId = null)
+    {
+        $product = Product::where('product_id', $productId)->first();
         return $product;
     }
 }

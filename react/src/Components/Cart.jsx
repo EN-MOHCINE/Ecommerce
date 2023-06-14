@@ -6,9 +6,9 @@ import CheckOut from "./CheckOut";
 import styles from "./cssComponents/Cart.module.css";
 
 function Cart(props) {
-  const [refresh,setRefresh]=useState(1)
+  const [refresh, setRefresh] = useState(1);
   const [productsCart, setProductsCart] = useState();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const Data = new FormData();
   Data.append("user_id", localStorage.getItem("user_id"));
   function increase(index) {
@@ -19,7 +19,7 @@ function Cart(props) {
       setProductsCart(newProductsCart);
     }
   }
-  
+
   function decrease(index) {
     const newProductsCart = [...productsCart];
     const product = newProductsCart[index];
@@ -37,12 +37,11 @@ function Cart(props) {
       .post("http://127.0.0.1:8000/api/Cart", Data)
       .then((response) => {
         setProductsCart(response.data);
-        
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [props.visibility ]);
+  }, [props.visibility]);
   function deleteCart(id) {
     axios
       .delete(`http://127.0.0.1:8000/api/Cart/${id}`)
@@ -55,99 +54,140 @@ function Cart(props) {
         console.log(error);
       });
   }
+  function navigation() {
+    if (productsCart.length>=1) {
+      navigate("/checkout")
+    } else {
+      props.setVisibility(false);
+    }
+    
+  }
   function updateCart() {
-    axios.patch('http://127.0.0.1:8000/api/Cart',{productsCart})
-      .then(response=>{
+    axios
+      .patch("http://127.0.0.1:8000/api/Cart", { productsCart })
+      .then((response) => {
         console.log(response.data);
       })
-      .catch (error=>{
+      .catch((error) => {
         console.log(error);
       });
   }
-  return( <> {props.visibility ? 
-    
-    <div id={styles.CartOverlay}>
-      <div id={styles.CartContainer}>
-        <div id={styles.Header}>
-          <p>Cart</p>
-          <span onClick={() => {props.setVisibility(false);updateCart()}}>X</span>
-        </div>
-        <div id={styles.Body}>
-          {productsCart
-            ? productsCart.map((product, index) => (
-                <div key={product.cart_id} className={styles.productDiv}>
-                  <img
-                    src={"http://127.0.0.1:8000/pictures/" + JSON.parse(product.picture)[0]}
-                    className={styles.img}
-                  />
-                  <div className={styles.CartDetails}>
-                    <div className={styles.titleAndClose}>
-                      <span className={styles.productName}>{product.name}</span>{" "}
-                      <span
-                        className={styles.close}
-                        onClick={() => deleteCart(product.cart_id)}
-                      >
-                        X
-                      </span>
-                    </div>
-                    <div>
-                      <span className={styles.sizeTitle}>size :</span>
-                      <span>{product.size}</span>
-                    </div>
-                    <span className={styles.counterContainer}>
-                      <div id={styles.counter}>
-                        <button
-                          className={styles.btn}
-                          onClick={() => decrease(index)}
-                        >
-                          -
-                        </button>
-                        <div>{product.quantity}</div>
-                        <button
-                          className={styles.btn}
-                          onClick={() => increase(index)}
-                        >
-                          +
-                        </button>
+  return (
+    <>
+      {" "}
+      {props.visibility ? (
+        <div id={styles.CartOverlay}>
+          <div id={styles.CartContainer}>
+            <div id={styles.Header}>
+              <p>Cart</p>
+              <span
+                onClick={() => {
+                  props.setVisibility(false);
+                  updateCart();
+                }}
+              >
+                X
+              </span>
+            </div>
+            <div id={styles.Body}>
+              {productsCart.length>=1
+                ? productsCart.map((product, index) => (
+                    <div key={product.cart_id} className={styles.productDiv}>
+                      <img
+                        src={
+                          "http://127.0.0.1:8000/pictures/" +
+                          JSON.parse(product.picture)[0]
+                        }
+                        className={styles.img}
+                      />
+                      <div className={styles.CartDetails}>
+                        <div className={styles.titleAndClose}>
+                          <span className={styles.productName}>
+                            {product.name}
+                          </span>{" "}
+                          <span
+                            className={styles.close}
+                            onClick={() => deleteCart(product.cart_id)}
+                          >
+                            X
+                          </span>
+                        </div>
+                        <div>
+                          <span className={styles.sizeTitle}>size :</span>
+                          <span>{product.size}</span>
+                        </div>
+                        <span className={styles.counterContainer}>
+                          <div id={styles.counter}>
+                            <button
+                              className={styles.btn}
+                              onClick={() => decrease(index)}
+                            >
+                              -
+                            </button>
+                            <div>{product.quantity}</div>
+                            <button
+                              className={styles.btn}
+                              onClick={() => increase(index)}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className={styles.price}>
+                            {product.promotion > 0 ? (
+                              <>
+                                <p>
+                                  {product.price -
+                                    product.price *
+                                      (product.promotion / 100)}{" "}
+                                  DH
+                                </p>
+                              </>
+                            ) : (
+                              <p>{product.price} DH</p>
+                            )}
+                          </div>
+                        </span>
                       </div>
-                      <div className={styles.price}>{product.promotion > 0 ? (
-                    <>
-                      <p >{product.price-(product.price * (product.promotion / 100))} DH</p>
-                      
-                    </>
-                  ) : (
-                    <p>{product.price} DH</p>
-                  )}</div>
-                    </span>
-                  </div>
-                </div>
-              ))
-            : ""}
-        </div>
-        <div id={styles.footer}>
-          <div id={styles.priceDiv}>
-            <span id={styles.totalText}>subtotal :</span>
-            <span id={styles.totalNumber}>
-              {" "}
-              {productsCart
-                ? productsCart.reduce(
-                    (total, product) =>
-                      total +( product.price-(product.price * (product.promotion / 100))) * product.quantity,
-                    0
-                  )
-                : 0}{" "}
-              DH
-            </span>
+                    </div>
+                  ))
+                : <h1>accune product to your cart</h1>}
+            </div>
+            <div id={styles.footer}>
+              <div id={styles.priceDiv}>
+                <span id={styles.totalText}>subtotal :</span>
+                <span id={styles.totalNumber}>
+                  {productsCart
+                    ? productsCart.reduce(
+                        (total, product) =>
+                          total +
+                          (product.price -
+                            product.price * (product.promotion / 100)) *
+                            product.quantity,
+                        0
+                      )
+                    : 0}{" "}
+                  DH
+                </span>
+              </div>
+
+              <button
+                onClick={() => {
+                  props.setVisibility(false);
+                  updateCart();
+                  navigation();
+                  setRefresh(refresh + 1);
+                }}
+              >
+                check out
+              </button>
+            </div>
           </div>
-          
-          <button onClick={()=>{props.setVisibility(false);updateCart();navigate('/checkout');setRefresh(refresh+1)}}>check out</button>
         </div>
-      </div>
-      
-    </div>:''}</>)
-    
-    
-  
+      ) : (
+        ""
+      )}
+    </>
+  );
 }
 
 export default Cart;

@@ -61,5 +61,15 @@ class SizesController extends Controller
         $category->save();
         return response()->json(['message' => 'Size created successfully'], 200);
     }
-
+    public function sizeLeft($id)
+    {   $sizes=[];
+        $productName=DB::table('products')->select('name')->where('product_id',$id)->get();
+        $sizesProduct=DB::table('products')->select('size_id')->where('name', $productName[0]->name)->pluck('size_id');
+        $sizes = DB::table('sizes')
+        ->select('size_id', 'name_Size')
+        ->whereNotIn('size_id', $sizesProduct)
+        ->orderByDesc('name_Size')
+        ->get();
+        return $sizes;
+    }
 }

@@ -24,6 +24,7 @@ import Infos_user from './Components/InfosUser';
 import AfterPaiment from "./Components/afterPaiment";
 import ShopNow from "./Components/ShopNow";
 import PaymentForm from "./Components/PaymentChoice";
+import AddProductSize from "./AdminComponents/AddProductSize";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -104,6 +105,10 @@ const Routes = createBrowserRouter([
                 {
                   path:'/adminPannel/updateProduct/:id',
                   element:<UpdateProduct/>
+                },
+                {
+                  path:'/adminPannel/productSize/:id',
+                  element:<AddProductSize/>
                 },
                 {
                   path:'/adminPannel/category',

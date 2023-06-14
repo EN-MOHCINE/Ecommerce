@@ -44,7 +44,6 @@ function ProductsAdminLayout() {
       .get("http://127.0.0.1:8000/api/dropDownCollections")
       .then((response) => {
         setCollectionName(response.data);
-        console.log(response.data)
       })
       .catch((error) => {
         console.error(error);
