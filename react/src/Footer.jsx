@@ -63,24 +63,20 @@ function Footer() {
         <div className="FullScrenDiv">
           <p className="title">Nos cataloges</p>
           <ul>
+            
             <li className="li">
-              <Link to='/products/categories/1'>
-                Djellaba
-              </Link>
+            <Link to='/products/categories/5'>Hoodies</Link>
             </li>
             <li className="li">
-            <Link to='/products/categories/3'>Kaftan</Link>
+                <Link to='/products/categories/2'>Jackets</Link>
             </li>
             <li className="li">
-                <Link to='/products/categories/5'>Abaya</Link>
+                <Link to='/products/categories/7'>Pants</Link>
             </li>
             <li className="li">
-                <Link to='/products/categories/4'>Takchita</Link>
-            </li>
-            <li className="li">
-                <Link to='/products/categories/2'>Gandora</Link>
+                <Link to='/products/categories/1'>Sweatshirts</Link>
             </li> <li className="li">
-                <Link to='/products/categories/6'>Dress</Link>
+                <Link to='/products/categories/3'>Tanks Tops</Link>
             </li>
           </ul>
         </div>
