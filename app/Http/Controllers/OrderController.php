@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
 use App\Mail\emailCheckout;
+use App\Mail\facture;
 use Illuminate\Http\Request;
 use App\Models\confirmOreders;
 use Illuminate\Support\Facades\DB;
@@ -21,15 +22,18 @@ class OrderController extends Controller
             'quantity'=>$request->quantity,
             "cardnumber" => $request->cardnumber
         ]);
+        confirmOreders::where('id',$request->confOrder)->delete();
         $datalist = [
-            'email' => $request->email,
             'name' => $request->name,
+            'email'=>$request->email,
             'streetAddress' => $request->address,
             'productName'=>$request->productName,
-            'quantity'=>$request->quantity
+            'productQuantity'=>$request->quantity,
+            'productPrice'=>$request->productPrice,
+            'promotion'=>$request->promotion,
         ];
 
-        Mail::to($request->email)->send(new emailCheckout($datalist));
+        Mail::to($request->email)->send(new facture($datalist));
         
         $product = confirmOreders::where('id', $request->orderId)->get();
         $p = Product::where('product_id', $product->product_id)->first();

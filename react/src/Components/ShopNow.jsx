@@ -99,7 +99,7 @@ if (typeof product.picture_path === "string") {
           quantity:quantity,
           total:
             (product.price - product.price * (product.promotion / 100)) *
-            quantity,
+            quantity*1.2,
         }
         
       },

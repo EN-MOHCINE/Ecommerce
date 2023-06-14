@@ -96,7 +96,7 @@ function CheckOut() {
           quantity:product.quantity,
           total:
             (product.price - product.price * (product.promotion / 100)) *
-            product.quantity,
+            product.quantity*1.2,
         })),
       },
     });
@@ -256,9 +256,9 @@ function CheckOut() {
                   </div>
                 </div>
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <span>total</span>
+                  <div style={{ display: "flex",justifyContent:"space-between"}}>
+                  <span>TVA</span>
                   <span>
                     {products
                       ? products.reduce(
@@ -266,12 +266,29 @@ function CheckOut() {
                             total +
                             (product.price -
                               product.price * (product.promotion / 100)) *
-                              product.quantity,
+                              product.quantity * 0.2,
                           0
                         )
                       : 0}
                     DH
                   </span>
+                  </div>
+                  <div style={{ display: "flex",justifyContent:"space-between"}}>
+                  <span>TOTAL TTC</span>
+                  <span>
+                    {products
+                      ? products.reduce(
+                          (total, product) =>
+                            total +
+                            (product.price -
+                              product.price * (product.promotion / 100)) *
+                              product.quantity*1.2,
+                          0
+                        )
+                      : 0}
+                    DH
+                  </span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -27,6 +27,7 @@ function CommandDetails() {
     if (data.productQuantity - data.orderQuantity > 0) {
       const Data = new FormData();
       Data.append("userId", data.userId);
+      Data.append('confOrder',data.confOrder)
       Data.append("cardnumber", data.cardnumber);
       Data.append("quantity", data.orderQuantity);
       Data.append("productId", data.productId);
@@ -34,7 +35,10 @@ function CommandDetails() {
       Data.append("address", data.address);
       Data.append("productName", data.productName);
       Data.append("name", data.userName);
-      Data.append('orderId',params.id)
+      Data.append('orderId',params.id);
+      Data.append('productPrice',data.productPrice);
+      Data.append('productQuantity',data.productQuantity);
+      Data.append('promotion',data.promotion);
       axios
         .post("http://127.0.0.1:8000/api/confirmOrder/", Data)
         .then((response) => {
